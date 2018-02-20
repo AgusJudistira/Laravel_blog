@@ -13,7 +13,9 @@
 
 Route::get('/', function () {
     //return '<h1>Hello World!</h1>';
-    return view('welcome');
+    $tasks = ['Go to the store', 'Finish my screencast', 'Clean the house'];
+    
+    return view('welcome', compact('tasks'));
 });
 
 Route::get('aboutus', function () {

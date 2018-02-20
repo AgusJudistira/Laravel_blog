@@ -13,9 +13,19 @@
 
 Route::get('/', function () {
     //return '<h1>Hello World!</h1>';
-    $tasks = ['Go to the store', 'Finish my screencast', 'Clean the house'];
-    
+    $tasks = DB::table('tasks')->latest()->get();
+    //return $tasks;
     return view('welcome', compact('tasks'));
+});
+
+Route::get('/tasks/{task}', function ($id) {
+
+    
+    $task = DB::table('tasks')->find($id);
+    
+    //dd($task);
+
+    return view('tasks.show', compact('tasks'));
 });
 
 Route::get('aboutus', function () {

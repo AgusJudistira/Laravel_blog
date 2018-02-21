@@ -77,6 +77,13 @@
                 </div>
             @endif
 
+        <ul>
+           @foreach($tasks as $task)
+                    <li>{{$task->body}}</li>
+
+           @endforeach;
+        </ul>
+            
             <div class="content">
                 <h1>Agus Judistira's Blog</h1>
                 <h2>Welkom!</h2>

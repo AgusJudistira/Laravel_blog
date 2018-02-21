@@ -77,20 +77,6 @@
                 </div>
             @endif
 
-<<<<<<< HEAD
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-=======
         <ul>
            @foreach($tasks as $task)
                     <li>{{$task->body}}</li>
@@ -106,7 +92,6 @@
                         <li>{{ $task->body }}</li>
                     @endforeach
                 </ul>
->>>>>>> cee55095efd0b7ade6e8f6d608322b28aafdfff1
             </div>
         </div>
     </body>

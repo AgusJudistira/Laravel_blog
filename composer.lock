@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "bf3c948f982e4ea5ec2fcaef27270719",
-=======
-    "content-hash": "a529934503639f8c6783b21b7efe77f1",
->>>>>>> cee55095efd0b7ade6e8f6d608322b28aafdfff1
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2549,7 +2545,6 @@
         },
         {
             "name": "nunomaduro/collision",
-<<<<<<< HEAD
             "version": "v1.1.22",
             "source": {
                 "type": "git",
@@ -2560,37 +2555,16 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/nunomaduro/collision/zipball/236609bd5a067587f600bc55c5d683b840798b22",
                 "reference": "236609bd5a067587f600bc55c5d683b840798b22",
-=======
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "4e310ef9384f53ee8dda8736afb3cbaf320753a0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/4e310ef9384f53ee8dda8736afb3cbaf320753a0",
-                "reference": "4e310ef9384f53ee8dda8736afb3cbaf320753a0",
->>>>>>> cee55095efd0b7ade6e8f6d608322b28aafdfff1
                 "shasum": ""
             },
             "require": {
                 "filp/whoops": "^2.1.4",
-<<<<<<< HEAD
-=======
-                "jakub-onderka/php-console-highlighter": "0.3.*",
->>>>>>> cee55095efd0b7ade6e8f6d608322b28aafdfff1
                 "php": "^7.1",
                 "symfony/console": "~2.8|~3.3|~4.0"
             },
             "require-dev": {
-<<<<<<< HEAD
                 "laravel/framework": "5.5.*",
                 "phpunit/phpunit": "~6.5"
-=======
-                "laravel/framework": "5.6.*",
-                "phpunit/phpunit": "~7.0"
->>>>>>> cee55095efd0b7ade6e8f6d608322b28aafdfff1
             },
             "type": "library",
             "extra": {
@@ -2628,11 +2602,7 @@
                 "php",
                 "symfony"
             ],
-<<<<<<< HEAD
             "time": "2018-02-07T10:42:20+00:00"
-=======
-            "time": "2018-02-18T12:29:27+00:00"
->>>>>>> cee55095efd0b7ade6e8f6d608322b28aafdfff1
         },
         {
             "name": "phar-io/manifest",

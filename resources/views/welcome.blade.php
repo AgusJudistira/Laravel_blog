@@ -1,4 +1,4 @@
-!doctype html>
+<!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -67,22 +67,11 @@
     <body>
         <ul>
            @foreach($tasks as $task)
-                    <li>{{$task}}</li>
+                    <li>{{$task->body}}</li>
 
            @endforeach;
         </ul>
-            <div class="flex-center position-ref full-height">
-                @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
+            
             <div class="content">
                 <div class="title m-b-md">
                    Welcome home

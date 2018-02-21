@@ -10,18 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Task;
 
-Route::get('/', function () {
+
+Route::get('/tasks', function () {
     //return '<h1>Hello World!</h1>';
-    $tasks = DB::table('tasks')->latest()->get();
+    $tasks = Task::all();
     //return $tasks;
-    return view('welcome', compact('tasks'));
+    return view('tasks.index', compact('tasks'));
 });
 
 Route::get('/tasks/{task}', function ($id) {
 
-    
-    $task = DB::table('tasks')->find($id);
+
+    $task = Task::find($id);
     
     //dd($task);
 

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +15,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+=======
+/*
+Route::get('/tasks', 'TasksController@index');
+
+Route::get('/tasks/{task}', 'TasksController@show');
+*/
+Route::get('/', 'PostsController@index');
+?>
+>>>>>>> cee55095efd0b7ade6e8f6d608322b28aafdfff1

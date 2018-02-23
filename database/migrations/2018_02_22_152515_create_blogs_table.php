@@ -19,8 +19,7 @@ class CreateBlogsTable extends Migration
             $table->string('subtitel');
             $table->text('inleiding');
             $table->text('artikel');
-            $table->timestamp('datuminvoer');
-            $table->timestamp('datumupdate');
+            $table->timestamps();
             $table->boolean('commentaar_toegestaan');
         });
     }

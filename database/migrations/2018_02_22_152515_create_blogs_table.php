@@ -17,8 +17,8 @@ class CreateBlogsTable extends Migration
             $table->increments('id');
             $table->string('titel');
             $table->string('subtitel')->nullable();
-            $table->text('inleiding');
-            $table->text('artikel');
+            $table->text('inleiding')->nullable();
+            $table->text('artikel')->nullable();
             $table->timestamps();
             $table->boolean('commentaar_toegestaan');
         });

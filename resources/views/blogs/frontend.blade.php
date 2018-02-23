@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>CMS Frontend</title>
     <link rel="stylesheet" type="text/css" href="/css/frontend.css" />
-  </head>
+</head> 
   <body>
 
     <!--
@@ -34,7 +34,7 @@
         echo $inlog_button;
         echo $uitlog_button;
         echo $maanden; */
-        // echo HTML::link('backend.blade.php', 'Naar administratie aan de achterkant');
+       // echo HTML::link('backend.blade.php', 'Naar administratie aan de achterkant');
         $link_naar_secties = "<h3><a href='backend'>Naar administratie aan de achterkant</a></h3>";
         echo $link_naar_secties;
         ?> 
@@ -52,6 +52,7 @@
     </div>
     @endsection
 
-    <!-- <script src="CMSfrontend_002.js"></script> -->
+    <!-- <script type="text/javascript" src="{{ URL::asset('js/CMSfrontend_002.js') }}"></script> -->
+ 
   </body>
 </html>

@@ -19,7 +19,7 @@ Route::get('/', function() {
     return view('blogs.frontend', compact('blogs'));
 });
 
-Route::get('/blogs/{blog}', 'BlogsController@show');
+// Route::get('/blogs/{blog}', 'BlogsController@show');
 
 Route::get('/backend', 'BlogsController@backend');
 

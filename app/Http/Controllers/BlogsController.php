@@ -7,35 +7,30 @@ use App\Blog;
 
 class BlogsController extends Controller
 {
-    public function index()
+    public function index() // als gebruiker naar root gaat
     {
         return view('blogs.frontend');
     }
 
-    public function backend()
+    public function backend() // als gebruiker naar '/backend' gaat
     {
         return view('blogs.backend');
     }
-    
-    public function create()
+
+    public function detail() // als gebruiker naar '/backend/detail' gaat
     {
-        return view('blogs.create');
+        return view('blogs.backend.detail');
+    }
+
+    public function store() // als gebruiker blog formulier in /backend submit
+    {
+        //dd(request(["titel", "artikel"]));
+        $blog = new Blog;
+        $blog->titel = request('titel');
+        $blog->artikel = request('artikel');
+        $blog->save();
+
+        return redirect('/backend');
     }
     
-    public function store()
-    { 
-        
-        //Create a new post using the request data
-        $post = new Post;
-        $post->title = request('title');
-        $post->body = request('body');
-       
-        // Save it to the database
-        $post->save();
-
-        // And then redirect to the homepage
-        return redirect('/');
-
-    }
-
 }

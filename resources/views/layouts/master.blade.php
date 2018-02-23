@@ -18,6 +18,7 @@
   </head>
 
   <body>
+  
       @yield('kop')
       
       @yield('linkerkolom')

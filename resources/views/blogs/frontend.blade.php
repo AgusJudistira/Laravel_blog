@@ -1,4 +1,3 @@
-
 @extends ('layouts.master')
 
 
@@ -11,23 +10,9 @@
     <link rel="stylesheet" type="text/css" href="/css/frontend.css" />
 </head> 
   <body>
-    
-    <?php $thisfile = $_SERVER['PHP_SELF']; ?>
-    
-    <form method="POST" action="/blogs">
-    {{csrf_field()}}
-        <div class="form-title">
-            <label for="title">Title</label>
-            <input id="title" type="text" class="form-control" name="title">
-        </div>
-        <div class="form-body">
-            <label for="body">Body</label>
-            <textarea id="body" class="form-control" name="body"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send</button>
-    </form>
 
-    <!-- <form id="user-login" method="post" action="<?php echo $thisfile?>">
+    <!--
+    <form id="user-login" method="post" action="<?php //echo $thisfile?>">
         <h3 align='center'>Gebruikers login</h3>
         <p>E-mail: <input type="text" name="email" required></p>
         <p>Wachtwoord: <input type="password" name="wachtwoord" required></p>
@@ -44,7 +29,6 @@
 
     @section('linkerkolom')
     <div id="linkerkolom">
-        Linkerkolom
         <?php /*
         echo $categoriekeuzemenu;
         echo $inlog_button;
@@ -60,7 +44,11 @@
 
     @section('rechterkolom')
     <div id="rechterkolom">
-        Rechterkolom
+        @foreach ($blogs as $blog)
+            <h4>{{ $blog->titel }}</h4>
+            <p>Datum publicatie: {{ $blog->created_at }}</p>
+            <p>{!! $blog->artikel !!}</p>            
+        @endforeach
     </div>
     @endsection
 

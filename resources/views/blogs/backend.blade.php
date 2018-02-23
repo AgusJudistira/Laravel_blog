@@ -1,3 +1,5 @@
+@extends('layouts.master')
+
 <!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
@@ -8,27 +10,26 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
-    <div id="kop">
-      <h1>Blog administratie</h1>
-    </div>
+    @section('kop')
+        <div id="kop">
+        <h1>Blog administratie</h1>
+        </div>
+    @endsection
 
-    <div id="linkerkolom">
-    <?php 
-        // if (strlen($uitloggen) == 0) {
-        //     $links = "<h3><a href=\"CMSfrontend_002.php\">Naar de voorkant</a></h3>";
-        // }
-        // else {
-        //     $links = "<h3><a href=\"CMSbackendcategory_002.php\">Categorie toevoegen</a></h3>";
-        //     $links .= "<h3><a href=\"CMSfrontend_002.php\">Naar de voorkant</a></h3>";
-        // }
-        // echo $uitloggen;
-        // echo $links;
-    ?>
-    </div>
-    <div id="rechterkolom">
-    <?php //echo $bloglist; ?>
-    <?php //echo $editor; ?>
-    </div>
+    @section('linkerkolom')
+        <div id="linkerkolom">
+
+        </div>
+    @endsection
+
+    @section('rechterkolom')
+        <div id="rechterkolom">
+            Rechterkolom
+            <?php //echo $bloglist; ?>
+            <?php //echo $editor; ?>
+            @include('blogs.posts.invoer')
+        </div>
+     @endsection
 
     <div id="hidden-h2" style="display: none"> 
     <h2>nodig</h2>
@@ -36,7 +37,8 @@
     <div id="comment-checkbox">
     </div>
 
+    <!--
     <script src="CMSbackend_002.js"></script>
-    <script src="wysiwyg-editor.js"></script>
+    <script src="wysiwyg-editor.js"></script> -->
   </body>
 </html>

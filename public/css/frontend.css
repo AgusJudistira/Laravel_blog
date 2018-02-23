@@ -35,6 +35,25 @@ height: 100%;
 
 }
 
+input#title.form-control{
+  width: 200px;
+}
+
+div.form-title{
+   margin-top: 80px;
+}
+
+textarea#body.form-control{
+  width: 400px;
+  height: 200px;
+}
+
+div.form-body{
+  margin-top: 30px;
+}
+
+
+
 #rechterkolom {
 position: absolute;
 display: block;

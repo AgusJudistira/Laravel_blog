@@ -11,8 +11,20 @@
 |
 */
 
-Route::get('/', 'BlogsController@index');
+//Route::get('/', 'BlogsController@index');
+
+Route::get('/', function() {
+    $blogs = App\Blog::latest()->get();
+
+    return view('blogs.frontend', compact('blogs'));
+});
 
 Route::get('/blogs/{blog}', 'BlogsController@show');
+
+Route::get('/backend', 'BlogsController@backend');
+
+Route::post('/posts/invoer', 'BlogsController@store');
+
+Route::get('/detail/detail', 'BlogsController@detail');
 
 

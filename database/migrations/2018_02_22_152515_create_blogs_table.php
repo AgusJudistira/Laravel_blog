@@ -20,7 +20,7 @@ class CreateBlogsTable extends Migration
             $table->text('inleiding')->nullable();
             $table->text('artikel')->nullable();
             $table->timestamps();
-            $table->boolean('commentaar_toegestaan');
+            $table->boolean('commentaar_toegestaan')->default(false);
         });
     }
 

@@ -16,7 +16,7 @@ class BlogsController extends Controller
     {   
         $blogs = Blog::latest()->get();
 
-        return view('blogs.backend', compact('blogs'));       
+        return view('blogs.backend', compact('blogs'));
     }
 
     public function detail() // als gebruiker naar '/backend/detail' gaat
@@ -32,8 +32,8 @@ class BlogsController extends Controller
         $blog->artikel = request('artikel');
         $blog->save();
 
-        return view('blogs.backend');
-        //return redirect('/backend');
+        //return view('blogs.backend');
+        return redirect('/backend');
     }
     
 }

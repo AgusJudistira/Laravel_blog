@@ -10,25 +10,26 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
+  
     @section('kop')
-        <div id="kop">
         <h1>Blog administratie</h1>
-        </div>
     @endsection
 
     @section('linkerkolom')
-        <div id="linkerkolom">
-
-        </div>
+        <h4><a href='/'>Naar de voorkant</a></h4>            
     @endsection
 
     @section('rechterkolom')
-        <div id="rechterkolom">
-            Rechterkolom
-            <?php //echo $bloglist; ?>
-            <?php //echo $editor; ?>
-            @include('blogs.posts.invoer')
-        </div>
+
+        @foreach ($blogs as $blog)
+            <h4>{{ $blog->titel }}</h4>
+            <p>Datum publicatie: {{ $blog->created_at }}</p>
+            <p>{!! $blog->artikel !!}</p>
+            <hr />
+        @endforeach
+
+        @include('blogs.posts.invoer')
+
      @endsection
 
     <div id="hidden-h2" style="display: none"> 

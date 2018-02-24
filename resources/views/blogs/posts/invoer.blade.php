@@ -1,5 +1,3 @@
-@extends('layouts.master')
-
 <form id="artikelinvoer" method="POST" action="/posts/invoer">
     {{ csrf_field() }}
     <h4>Voer hier een nieuwe blog in:</h4>

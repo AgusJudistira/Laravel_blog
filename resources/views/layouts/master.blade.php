@@ -18,12 +18,17 @@
   </head>
 
   <body>
-  
+    <div id="kop">
       @yield('kop')
-      
-      @yield('linkerkolom')
+    </div>
 
+    <div id="linkerkolom">
+      @yield('linkerkolom')
+    </div>
+
+    <div id="rechterkolom">
       @yield('rechterkolom')
+    </div>
     
   </body>
 </html>

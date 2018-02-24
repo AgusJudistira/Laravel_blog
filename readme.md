@@ -1,10 +1,8 @@
-Opdracht uitgevoerd door Agus Judistira en Marat Petrosov
-Github: https://github.com/AgusJudistira/Laravel_blog
-Trello: https://trello.com/b/C5zKtf2g/een-cms-bouwen
-Deployment: https://vast-citadel-35958.herokuapp.com/
-
-<hr />
-
+<h4>Opdracht uitgevoerd door <b>Agus Judistira</b> en <b>Marat Petrosov</b></h4>
+<p><b>Github:</b> https://github.com/AgusJudistira/Laravel_blog</p>
+<p><b>Trello:</b> https://trello.com/b/C5zKtf2g/een-cms-bouwen</p>
+<p><b>Deployment:</b> https://vast-citadel-35958.herokuapp.com/</p>
+<br /><hr /><br />
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">

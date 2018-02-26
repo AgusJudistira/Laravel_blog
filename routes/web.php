@@ -19,7 +19,9 @@ Route::get('/', function() {
     return view('blogs.frontend', compact('blogs'));
 });
 
-Route::get('backend/categories', 'CategoryController@show');
+Route::get('/create_cat', 'CategoryController@show');
+
+Route::post('/create_cat', 'CategoryController@store');
 
 
 Route::get('/backend', 'BlogsController@backend');

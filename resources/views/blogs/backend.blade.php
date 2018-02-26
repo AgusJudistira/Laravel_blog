@@ -17,6 +17,7 @@
 
     @section('linkerkolom')
         <h4><a href='/'>Naar de voorkant</a></h4>            
+        <h4><a href='/create_cat'>Categorieen toevoegen</a></h4>            
     @endsection
 
     @section('rechterkolom')

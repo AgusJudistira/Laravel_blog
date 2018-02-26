@@ -12,6 +12,7 @@ class BlogsController extends Controller
         return view('blogs.frontend');
     }
 
+
     public function backend() // als gebruiker naar '/backend' gaat
     {   
         $blogs = Blog::latest()->get();

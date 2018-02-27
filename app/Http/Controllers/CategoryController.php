@@ -31,4 +31,5 @@ class CategoryController extends Controller
         //return view('blogs.backend');
         return redirect('/create_cat');
     }
+
 }

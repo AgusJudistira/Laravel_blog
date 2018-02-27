@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Category;
 
 class BlogsController extends Controller
 {
@@ -20,6 +21,9 @@ class BlogsController extends Controller
         ->select("titel","created_at","artikel")
         ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
         ->get();        
+       
+        $categories = Category::all();
+   
 
         return view('blogs.frontend', compact('blogs_withcats', 'categories'));
     }

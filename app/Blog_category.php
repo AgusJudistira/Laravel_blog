@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Blog_category extends Model
 {
     public $timestamps = false;
 
@@ -13,4 +13,8 @@ class Category extends Model
         return $this->belongsToMany(Blog::class);
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

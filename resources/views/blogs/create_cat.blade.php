@@ -21,18 +21,18 @@
 
     @section('rechterkolom')
 
-        @foreach ($categories as $category)            
-            <p>{{ $category->cat_id }} - {{ $category->category_name }}</p>
-            <hr />
-        @endforeach
+    @foreach ($categories as $category)            
+        <p>{{ $category->cat_id }} - {{ $category->category_name }}</p>
+        <hr />
+    @endforeach
 
-        <form id="categorieinvoer" method="post" action="/create_cat">
-            {{ csrf_field() }}
-            Nieuwe categorie: <input id="categorie" name="categorie" type="text" value="" required>
-            <input id="sendButton" name="submit" type="submit" value="Toevoegen" form="categorieinvoer">
-        </form>
+    <form id="categorieinvoer" method="post" action="/create_cat">
+        {{ csrf_field() }}
+        Nieuwe categorie: <input id="categorie" name="categorie" type="text" value="" required>
+        <input id="sendButton" name="submit" type="submit" value="Toevoegen" form="categorieinvoer">
+    </form>
     
-     @endsection
+    @endsection
 
     <div id="hidden-h2" style="display: none"> 
     <h2>nodig</h2>

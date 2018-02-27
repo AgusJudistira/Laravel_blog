@@ -14,7 +14,14 @@ class CategoryController extends Controller
         return view('blogs.create_cat', compact('categories'));
     }
 
-    public function store() // als gebruiker blog formulier in /backend submit
+    public function create_cat_menu()
+    {
+        $categories = Category::all();
+
+        return view('blogs.posts.invoer', compact('categories'));
+    }
+
+    public function store() // als administrator blog formulier in /backend submit
     {
         //dd(request(["titel", "artikel"]));
         $category = new Category;

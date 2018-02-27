@@ -37,12 +37,13 @@
 
     @section('rechterkolom')
     
-        @foreach ($blogs as $blog)
+        @foreach ( $blogs_withcats as $blog )
             <h4>{{ $blog->titel }}</h4>
-            <p>Datum publicatie: {{ $blog->created_at }}</p>
+            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: {{ $blog->categories }}</p>
             <p>{!! $blog->artikel !!}</p>
             <hr />
         @endforeach
+        
     
     @endsection
 

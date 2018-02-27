@@ -9,10 +9,19 @@ class BlogsController extends Controller
 {
     public function index() // als gebruiker naar root gaat
     {
-        $blogs = Blog::latest()->get();
+        //$blogs = Blog::latest()->get();
 
-        return view('blogs.frontend', compact('blogs'));
+        //return view('blogs.frontend', compact('blogs'));
         //return view('blogs.frontend');
+        $blogs_withcats = \App\Blog_category::join("blogs", "id", "=", "blog_categories.blog_id")
+        ->join("categories", "categories.cat_id", "=", "blog_categories.cat_id")
+        ->orderBy("created_at","desc")
+        ->groupBy("blogs.id")
+        ->select("titel","created_at","artikel")
+        ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
+        ->get();        
+
+        return view('blogs.frontend', compact('blogs_withcats', 'categories'));
     }
 
     public function backend() // als gebruiker naar '/backend' gaat
@@ -27,10 +36,9 @@ class BlogsController extends Controller
         ->groupBy("blogs.id")
         ->select("titel","created_at","artikel")
         ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
-        ->get();
-        
+        ->get();        
 
-        return view('blogs.backend', compact('blogs_withcats'), compact('categories'));
+        return view('blogs.backend', compact('blogs_withcats', 'categories'));
         //return view('blogs.backend', compact('blogs', 'categories'));
     }
 

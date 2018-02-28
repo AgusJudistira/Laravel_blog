@@ -10,7 +10,7 @@ class BlogsController extends Controller
     public function index() // als gebruiker naar root gaat
     {
         $blogs_withcats = Blog::with('categories')->latest()->get();
-
+    
         /*
         dd($blogs_withcats);
         //return view('blogs.frontend', compact('blogs'));
@@ -42,10 +42,34 @@ class BlogsController extends Controller
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
     }
 
-    public function detail($blog_id) // als gebruiker naar '/backend/detail' gaat
+    public function show_blog_detail($blog_id) // als gebruiker naar '/backend/detail' gaat
     {
-        $blog = Blog::where('id', $blog_id);
-        return view('blogs.backend.detail');
+        $blog_id = intval($blog_id);
+        $categories = \App\Category::all();
+        
+        $blog = Blog::find($blog_id);
+        // dd($blog);
+    
+        return view('blogs.edit', compact('blog', 'categories'));
+    }
+
+    public function store_blog_detail($blog_id) // als gebruiker blog formulier in /backend submit
+    {
+        //dd(request(["titel", "artikel"]));
+        $blog = Blog::find($blog_id);
+        $blog->titel = request('titel');
+        $blog->artikel = request('artikel');
+        $cat_id = request('cat_id');
+        $blog->save();
+
+
+        if ($blog->categories()->where('blog_categories.cat_id', $cat_id)->first() != true) {
+            // Categorie toegevoen. Anders niet omdat het al bij de categorie hoort.
+            $blog->categories()->attach($cat_id);
+        }
+
+        //return view('blogs.backend');
+        return redirect('/backend');
     }
 
     public function store() // als gebruiker blog formulier in /backend submit
@@ -62,6 +86,5 @@ class BlogsController extends Controller
         //return view('blogs.backend');
         return redirect('/backend');
     }
-    
     
 }

@@ -1,0 +1,16 @@
+#editor {
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+    background-color: khaki;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-right: 48px;
+    border: 3px solid black;
+  }
+
+.htmloutput {
+    width: 100%;
+    height: auto;
+}

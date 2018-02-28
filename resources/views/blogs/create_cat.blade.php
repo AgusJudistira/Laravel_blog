@@ -16,7 +16,7 @@
     @endsection
 
     @section('linkerkolom')
-        <h4><a href='/'>Naar de voorkant</a></h4>            
+        <h4><a href='/backend'>Terug naar Blog administratie</a></h4>            
     @endsection
 
     @section('rechterkolom')

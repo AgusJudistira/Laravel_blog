@@ -9,10 +9,11 @@ class BlogsController extends Controller
 {
     public function index() // als gebruiker naar root gaat
     {
-        //$blogs = Blog::latest()->get();
+        $blogs_withcats = Blog::with('categories')->latest()->get();
 
+        /*
+        dd($blogs_withcats);
         //return view('blogs.frontend', compact('blogs'));
-        //return view('blogs.frontend');
         $blogs_withcats = \App\Blog_category::join("blogs", "id", "=", "blog_categories.blog_id")
         ->join("categories", "categories.cat_id", "=", "blog_categories.cat_id")
         ->orderBy("created_at","desc")
@@ -20,30 +21,30 @@ class BlogsController extends Controller
         ->select("titel","created_at","artikel")
         ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
         ->get();        
-
+        */
         return view('blogs.frontend', compact('blogs_withcats', 'categories'));
     }
 
     public function backend() // als gebruiker naar '/backend' gaat
     {   
-        //$blogs = Blog::latest()->get();
-        
         $categories = \App\Category::all();
+        $blogs_withcats = Blog::with('categories')->latest()->get();        
 
+        /*
         $blogs_withcats = \App\Blog_category::join("blogs", "id", "=", "blog_categories.blog_id")
         ->join("categories", "categories.cat_id", "=", "blog_categories.cat_id")
         ->orderBy("created_at","desc")
         ->groupBy("blogs.id")
-        ->select("titel","created_at","artikel")
+        ->select("blogs.id", "titel", "created_at", "artikel")
         ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
         ->get();        
-
+        */
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
-        //return view('blogs.backend', compact('blogs', 'categories'));
     }
 
-    public function detail() // als gebruiker naar '/backend/detail' gaat
+    public function detail($blog_id) // als gebruiker naar '/backend/detail' gaat
     {
+        $blog = Blog::where('id', $blog_id);
         return view('blogs.backend.detail');
     }
 
@@ -61,5 +62,6 @@ class BlogsController extends Controller
         //return view('blogs.backend');
         return redirect('/backend');
     }
+    
     
 }

@@ -9,8 +9,11 @@ class Blog extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'blog_categories', 'blog_id', 'cat_id');
+    
     }
-    public function comments(){
+    
+    public function comments()
+    {
 
         return $this->hasMany(Comment::class);
     }

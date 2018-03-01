@@ -25,7 +25,7 @@
                
             @endforeach
         
-                <h2><a class="backend"href='backend'>to Backend</a></h2>        
+                <h2><a class="backend" href='backend'>to Backend</a></h2>        
     @endsection
 
     @section('rechterkolom')

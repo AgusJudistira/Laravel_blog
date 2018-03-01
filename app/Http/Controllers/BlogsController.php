@@ -43,9 +43,10 @@ class BlogsController extends Controller
 
     public function backend() // als gebruiker naar '/backend' gaat
     {   
-        $categories = \App\Category::all();
-        $blogs_withcats = Blog::with('categories')->latest()->get();        
+                
+        $categories = Category::all();
 
+        $blogs_withcats = Blog::with('categories')->latest()->get();
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
     }
 

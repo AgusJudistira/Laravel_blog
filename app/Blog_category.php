@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Blog_category extends Model
 {
     public $timestamps = false;
+    
+    protected $primaryKey = 'cat_id';
+
 
     public function blogs()
     {

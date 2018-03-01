@@ -2,7 +2,7 @@
 
 
 Route::get('/', 'BlogsController@index');
-Route::get('/frontend', 'CategoryController@show');//??????
+Route::get('/show_sort_cat/{cat_id}', 'BlogsController@show_sort_cat');
 
 Route::get('/backend', 'BlogsController@backend');
 

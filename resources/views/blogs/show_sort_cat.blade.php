@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
     <meta charset="UTF-8">
-    <title>CMS Frontend</title>
+    <title>CMS Backend</title>
     <link rel="stylesheet" type="text/css" href="/css/frontend.css" />
 </head> 
   <body>
@@ -17,26 +17,28 @@
 
     @section('linkerkolom')
         
-        <a class="cat-head" href="/">All Categories</a><br>
+        <a class="cat-head" href="/">Alle Categories</a><br>
               
             @foreach ($categories as $category)
                 
-               <a class="cat-body" href="/show_sort_cat/{{$category->cat_id}}">{{$category->category_name}}</a><br>
-               
+               <a class="cat-body"href="/show_sort_cat/{{$category->cat_id}}">{{$category->category_name}}</a>
+                           <hr />
             @endforeach
         
-                <h2><a class="backend"href='backend'>to Backend</a></h2>        
+                <a class="backend"href='/backend'>to Backend</a>       
     @endsection
 
-    @section('rechterkolom')
+      @section('rechterkolom')
     
     @foreach ( $blogs_withcats as $blog )
-        <h4>{{ $blog->titel }}</h4>
-        <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }} @endforeach</p>
-        <p>{!! $blog->artikel !!}</p>
+        <div>{{ $blog->titel }}</div>
+        <div> {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }} @endforeach</div>
+        <div>{!! $blog->artikel !!}</div>
         <hr />
-     @endforeach
-        
+    @endforeach
+    
+   
+      
         <div ="comments">
             @foreach($blog->comments as $comment)
                 <article>

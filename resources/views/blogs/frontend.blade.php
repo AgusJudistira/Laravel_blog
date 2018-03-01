@@ -19,9 +19,9 @@
         
         <a class="cat-head" href="/">All Categories</a><br>
               
-            @foreach ($categories as $category)
+            @foreach ($cat_link as $link)
                 
-               <a class="cat-body" href="/show_sort_cat/{{$category->cat_id}}">{{$category->category_name}}</a><br>
+               <a class="cat-body" href="/show_sort_cat/{{$link->cat_id}}">{{$link->category_name}}</a><br>
                
             @endforeach
         

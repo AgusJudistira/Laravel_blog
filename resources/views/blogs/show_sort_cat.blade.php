@@ -21,7 +21,7 @@
               
             @foreach ($categories as $category)
                 
-               <a class="cat-body"href="/show_sort_cat/{{$category->cat_id}}">{{$category->category_name}}</a>
+               <a class="cat-body" href="/show_sort_cat/{{$category->cat_id}}">{{$category->category_name}}</a>
                            <hr />
             @endforeach
         

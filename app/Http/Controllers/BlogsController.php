@@ -5,16 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\Category;
-use App\Blog_category;
 
 class BlogsController extends Controller
 {
+
     public function show_sort_cat($cat_id) // als gebruiker naar root gaat
     {
-        //$blogs = Blog::latest()->get();
+        $cat_link = \App\Category::all();
+        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();
+        
+        //$blogs_withcats = Blog::with('categories')->where('cat_id', $cat_id)->latest()->get();
+        // dd($blogs_withcats);
+        return view('blogs.frontend', compact('blogs_withcats', 'categories',  'cat_link'));
+    }
 
+    public function index() // als gebruiker naar root gaat
+    {
+
+        $cat_link = \App\Category::all();
+        $blogs_withcats = Blog::with('categories')->latest()->get();
+        //dd($blogs_withcats);
+        // $blogs_withcats = Category::findOrFail(1)->blogs()->latest()->get();
+        
+        /*
+        dd($blogs_withcats);
         //return view('blogs.frontend', compact('blogs'));
-        //return view('blogs.frontend');
         $blogs_withcats = \App\Blog_category::join("blogs", "id", "=", "blog_categories.blog_id")
         ->join("categories", "categories.cat_id", "=", "blog_categories.cat_id")
         ->orderBy("created_at","desc")
@@ -22,33 +37,44 @@ class BlogsController extends Controller
         ->select("titel","created_at","artikel")
         ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
         ->get();        
-
-
-        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();
-        //$blogs_withcats = Blog::with('categories')->where('cat_id', $cat_id)->latest()->get();
-        // dd($blogs_withcats);
-        return view('blogs.show_sort_cat', compact('blogs_withcats', 'categories'));
-    }
-    
-    public function index() // als gebruiker naar root gaat
-    {
-        $categories = Category::all();
-        $blogs_withcats = Blog::with('categories')->latest()->get();
-        return view('blogs.frontend', compact('blogs_withcats', 'categories'));
+        */
+        return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
     public function backend() // als gebruiker naar '/backend' gaat
     {   
-                
-        $categories = Category::all();
+        $categories = \App\Category::all();
+        $blogs_withcats = Blog::with('categories')->latest()->get();        
 
-        $blogs_withcats = Blog::with('categories')->latest()->get();
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
     }
 
-    public function detail() // als gebruiker naar '/backend/detail' gaat
+    public function show_blog_detail($blog_id) // als admin naar '/backend/detail' gaat
     {
-        return view('blogs.backend.detail');
+        $blog_id = intval($blog_id);
+        $categories = \App\Category::all();
+        
+        $blog = Blog::find($blog_id);
+    
+        return view('blogs.edit', compact('blog', 'categories'));
+    }
+
+    public function store_blog_detail($blog_id) // als admin een blog in /backend wijzigt en submit
+    {
+        //dd(request(["titel", "artikel"]));
+        $blog = Blog::find($blog_id);
+        $blog->titel = request('titel');
+        $blog->artikel = request('artikel');
+        $cat_id = request('cat_id');
+        $blog->save();
+
+        if ($blog->categories()->where('blog_categories.cat_id', $cat_id)->first() != true) {
+            // Categorie toegevoen. Anders niet omdat het al bij de categorie hoort.
+            $blog->categories()->attach($cat_id);
+        }
+
+        //return view('blogs.backend');
+        return redirect('/backend');
     }
 
     public function store() // als gebruiker blog formulier in /backend submit
@@ -64,6 +90,16 @@ class BlogsController extends Controller
 
         //return view('blogs.backend');
         return redirect('/backend');
+    }
+
+    public function fullblog($blog_id) 
+    {
+        $blog = Blog::find($blog_id); //->with('categories'); //->get();
+        $categories = $blog->categories()->get();
+        //$comments = $blog->comments()->get();
+        //dd($comments);
+
+        return view('blogs.fullblog', compact('blog', 'categories'));
     }
     
 }

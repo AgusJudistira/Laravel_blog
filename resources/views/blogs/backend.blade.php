@@ -12,20 +12,23 @@
   <body>
   
     @section('kop')
-        <h1>Blog administratie</h1>
+        <h1>Backend</h1>
     @endsection
 
     @section('linkerkolom')
-        <h4><a href='/'>Naar de voorkant</a></h4>            
-        <h4><a href='/create_cat'>Categorieen toevoegen</a></h4>            
+            <a class="cat-head"href='/'>to frontend</a>     
+    <br>
+            <a class="cat-add"href='/create_cat'>add category</a>
+   
+                     
     @endsection
 
     @section('rechterkolom')
         @include('blogs.posts.invoer')
 
-        @foreach ($blogs_withcats as $blog)
+        @foreach ( $blogs_withcats as $blog )
             <h4>{{ $blog->titel }}</h4>
-            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: {{ $blog->categories }}</p>
+            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }} @endforeach</p>
             <p>{!! $blog->artikel !!}</p>
             <hr />
         @endforeach

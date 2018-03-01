@@ -12,7 +12,7 @@ class Category extends Model
 
     public function blogs()
     {
-        return $this->belongsToMany(Blog::class);
+        return $this->belongsToMany(Blog::class, 'blog_categories', 'cat_id', 'blog_id');
     }
 
 }

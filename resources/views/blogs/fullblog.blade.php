@@ -27,7 +27,7 @@
         <p>{{ $blog->artikel }}</p>
         <hr>
 
-        <form id='commentaarinvoer' method='post' action='$thisfile'>
+        <form id='commentaarinvoer' method='post'>
             {{ csrf_field() }}
             <h4>Anoniem commentaar invoeren</h4>
             
@@ -35,6 +35,13 @@
 Voer een commentaar in...</textarea><br />
             <input id='sendButton' name='submit' type='submit' value='Verstuur'>
         </form>
+
+        @foreach($comments as $comment)
+            {{ $comment->comment }}
+        endforeach
+
     @endsection
+
+
     </body>
 </html>

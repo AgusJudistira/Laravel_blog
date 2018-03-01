@@ -23,6 +23,8 @@ Route::post('/edit/{blog_id}', 'BlogsController@store_blog_detail');
 
 Route::get('/fullblog/{blog_id}', 'BlogsController@fullblog');
 
+Route::post('/fullblog/{blog_id}', 'BlogsController@storeComment');
+
 Route::get('/create_cat', 'CategoryController@show');
 
 Route::post('/create_cat', 'CategoryController@store');

@@ -11,6 +11,7 @@ class BlogsController extends Controller
     public function index() // als gebruiker naar root gaat
     {
         $blogs_withcats = Blog::with('categories')->latest()->get();
+
         //$blogs_withcats = Category::findOrFail(1)->blogs()->latest()->get();
         
         /*
@@ -35,7 +36,7 @@ class BlogsController extends Controller
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
     }
 
-    public function show_blog_detail($blog_id) // als gebruiker naar '/backend/detail' gaat
+    public function show_blog_detail($blog_id) // als admin naar '/backend/detail' gaat
     {
         $blog_id = intval($blog_id);
         $categories = \App\Category::all();
@@ -45,7 +46,7 @@ class BlogsController extends Controller
         return view('blogs.edit', compact('blog', 'categories'));
     }
 
-    public function store_blog_detail($blog_id) // als gebruiker blog formulier in /backend submit
+    public function store_blog_detail($blog_id) // als admin een blog in /backend wijzigt en submit
     {
         //dd(request(["titel", "artikel"]));
         $blog = Blog::find($blog_id);
@@ -82,8 +83,18 @@ class BlogsController extends Controller
     {
         $blog = Blog::find($blog_id); //->with('categories'); //->get();
         $categories = $blog->categories()->get();
-        //$comments = $blog->comments()->get();
-        //dd($comments);
+        $comments = $blog->comments()->get();
+
+        return view('blogs.fullblog', compact('blog', 'categories', 'comments'));
+    }
+
+    public function storeComment($blog_id) 
+    {
+        $blog = Blog::find($blog_id); //->with('categories'); //->get();
+        $comments = new \App\Comments;
+        $comments->comment = request('commentaar');
+
+        $blog->categories()->save();
 
         return view('blogs.fullblog', compact('blog', 'categories'));
     }

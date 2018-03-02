@@ -35,10 +35,11 @@
 Voer een commentaar in...</textarea><br />
             <input id='sendButton' name='submit' type='submit' value='Verstuur'>
         </form>
-
-        @foreach($comments as $comment)
-            {{ $comment->comment }}
-        endforeach
+        <hr>
+        <p><b>Commentaren van lezers:</b></p>
+        @foreach($list_of_comments as $comment)
+            <p>door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }}</p>
+        @endforeach
 
     @endsection
 

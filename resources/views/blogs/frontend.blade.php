@@ -10,16 +10,6 @@
     <link rel="stylesheet" type="text/css" href="/css/frontend.css" />
 </head> 
   <body>
-
-    <!--
-    <form id="user-login" method="post" action="<?php //echo $thisfile?>">
-        <h3 align='center'>Gebruikers login</h3>
-        <p>E-mail: <input type="text" name="email" required></p>
-        <p>Wachtwoord: <input type="password" name="wachtwoord" required></p>
-        <p><input type="submit" value="Inloggen"></p>
-        <p><a href="create_account.php">Account aanmaken</a></p>
-        <p><a href="reset_password.php">Wachtwoord vergeten?</a></p>        
-    </form> -->
     
     @section('kop')
         <h1>Welkom op mijn blog!</h1>

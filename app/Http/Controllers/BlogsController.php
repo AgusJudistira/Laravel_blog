@@ -83,20 +83,26 @@ class BlogsController extends Controller
     {
         $blog = Blog::find($blog_id); //->with('categories'); //->get();
         $categories = $blog->categories()->get();
-        $comments = $blog->comments()->get();
+        $list_of_comments = $blog->comments()->get();
+        //dd($comments);
 
-        return view('blogs.fullblog', compact('blog', 'categories', 'comments'));
+        return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
 
     public function storeComment($blog_id) 
     {
         $blog = Blog::find($blog_id); //->with('categories'); //->get();
-        $comments = new \App\Comments;
-        $comments->comment = request('commentaar');
+        $categories = $blog->categories()->get();
 
-        $blog->categories()->save();
+        $comment = new \App\Comments;
+        $comment->blog_id = $blog->id;
+        $comment->comment = request('commentaar');
 
-        return view('blogs.fullblog', compact('blog', 'categories'));
+        $comment->save();
+
+        $list_of_comments = $blog->comments()->get();
+
+        return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
     
 }

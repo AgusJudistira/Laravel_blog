@@ -1,7 +1,7 @@
 <?php
 
 
-Route::get('/show_sort_cat/{cat_id}', 'BlogsController@show_sort_cat');
+Route::get('/{cat_id}', 'BlogsController@show_sort_cat');
 Route::get('/', 'BlogsController@index');
 Route::get('/backend', 'BlogsController@backend');
 Route::post('/posts/invoer', 'BlogsController@store');

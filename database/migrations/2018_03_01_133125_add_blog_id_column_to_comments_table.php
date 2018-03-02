@@ -14,7 +14,7 @@ class AddBlogIdColumnToCommentsTable extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->integer('blog_id')->after('id')->nullable();
+            //$table->integer('blog_id')->after('id')->nullable();
             //
         });
     }

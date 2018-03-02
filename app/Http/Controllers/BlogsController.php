@@ -85,7 +85,7 @@ class BlogsController extends Controller
         $blog->titel = request('titel');
         $blog->artikel = request('artikel');
         $cat_id = request('cat_id');
-        $blog-save();
+        $blog->save();
 
         if ($blog->categories()->where('blog_categories.cat_id', $cat_id)->first() != true) {
             $blog->categories()->attach($cat_id);

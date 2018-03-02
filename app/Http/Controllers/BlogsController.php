@@ -29,16 +29,15 @@ class BlogsController extends Controller
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
-    public function show_sort_cat($cat_id)  //als gebruiker naar root gaat
+        
+    public function show_sort_cat($cat_id)
     {
         $cat_link = \App\Category::all();
-        
-        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();
-        
-        //$blogs_withcats = Blog::with('categories')-where('cat_id', $cat_id)-latest()-get();
-        
+        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();        
+
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
+
 
     public function backend()
     {   

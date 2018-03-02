@@ -17,4 +17,10 @@ class Blog extends Model
 
         return $this->hasMany(Comment::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
+
 }

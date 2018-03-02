@@ -26,13 +26,17 @@
     @section('rechterkolom')
         @include('blogs.posts.invoer')
 
-        @foreach ( $blogs_withcats as $blog )
-            <h4>{{ $blog->titel }}</h4>
-            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }} @endforeach</p>
+        <h4>U kunt ook een van de onderstaande blogs wijzigen door op de titel te klikken</h4>
+        <hr>
+
+        @foreach ($blogs_withcats as $blog)
+            <h4><a href='/edit/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
+        
+            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }}  @endforeach</p>
             <p>{!! $blog->artikel !!}</p>
+            
             <hr />
         @endforeach
-
      @endsection
 
     <div id="hidden-h2" style="display: none"> 

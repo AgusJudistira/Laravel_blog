@@ -50,57 +50,74 @@ class BlogsController extends Controller
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
     }
 
-    public function show_blog_detail($blog_id) // als admin naar '/backend/detail' gaat
+    public function show_blog_detail($blog_id) 
     {
         $blog_id = intval($blog_id);
+
         $categories = \App\Category::all();
-        
         $blog = Blog::find($blog_id);
+        $list_of_comments = $blog->comments()->get();
     
-        return view('blogs.edit', compact('blog', 'categories'));
+        //dd($list_of_comments);
+
+        return view('blogs.edit', compact('blog', 'categories', 'list_of_comments'));
     }
 
-    public function store_blog_detail($blog_id) // als admin een blog in /backend wijzigt en submit
+    public function store_blog_detail($blog_id)
     {
-        //dd(request(["titel", "artikel"]));
         $blog = Blog::find($blog_id);
         $blog->titel = request('titel');
         $blog->artikel = request('artikel');
         $cat_id = request('cat_id');
-        $blog->save();
+        $blog-save();
 
         if ($blog->categories()->where('blog_categories.cat_id', $cat_id)->first() != true) {
-            // Categorie toegevoen. Anders niet omdat het al bij de categorie hoort.
             $blog->categories()->attach($cat_id);
         }
 
-        //return view('blogs.backend');
-        return redirect('/backend');
+        return redirect('backend');
     }
 
-    public function store() // als gebruiker blog formulier in /backend submit
+    public function store() 
     {
-        //dd(request(["titel", "artikel"]));
         $blog = new Blog;
         $blog->titel = request('titel');
         $blog->artikel = request('artikel');
         $cat_id = request('cat_id');
         $blog->save();
 
-        $blog->categories()->attach($cat_id);
+        $blog-categories()-attach($cat_id);
 
-        //return view('blogs.backend');
-        return redirect('/backend');
+        return view('blogs.backend');
+        return redirect('backend');
     }
 
     public function fullblog($blog_id) 
     {
-        $blog = Blog::find($blog_id); //->with('categories'); //->get();
+        $blog = Blog::find($blog_id);
         $categories = $blog->categories()->get();
-        //$comments = $blog->comments()->get();
+        $list_of_comments = $blog->comments()->get();
         //dd($comments);
 
-        return view('blogs.fullblog', compact('blog', 'categories'));
+        return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
+
+    public function storeComment($blog_id) 
+    {
+        $blog = Blog::find($blog_id); //->with('categories'); //->get();
+        $categories = $blog->categories()->get();
+
+        $comment = new \App\Comments;
+        $comment->blog_id = $blog->id;
+        $comment->comment = request('commentaar');
+
+        $comment->save();
+
+        $list_of_comments = $blog->comments()->get();
+
+        return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
+    }
+
+   
     
 }

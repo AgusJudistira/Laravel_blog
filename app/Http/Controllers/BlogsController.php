@@ -9,22 +9,33 @@ use App\Category;
 class BlogsController extends Controller
 {
 
-    public function show_sort_cat($cat_id)  //als gebruiker naar root gaat
-    {
+    public function index() // als gebruiker naar root gaat
+    {        
         $cat_link = \App\Category::all();
-        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();
+        $blogs_withcats = Blog::with('categories')->latest()->get();
+        //$blogs_withcats = Category::findOrFail(1)->blogs()->latest()->get();
         
-
+        /*
+        dd($blogs_withcats);
+        //return view('blogs.frontend', compact('blogs'));
+        $blogs_withcats = \App\Blog_category::join("blogs", "id", "=", "blog_categories.blog_id")
+        ->join("categories", "categories.cat_id", "=", "blog_categories.cat_id")
+        ->orderBy("created_at","desc")
+        ->groupBy("blogs.id")
+        ->select("titel","created_at","artikel")
+        ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
+        ->get();        
+        */
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
-    public function index()
+    public function show_sort_cat($cat_id)  //als gebruiker naar root gaat
     {
-
         $cat_link = \App\Category::all();
-        $blogs_withcats = Blog::with('categories')->latest()->get();
         
-
+        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();
+        
+        //$blogs_withcats = Blog::with('categories')-where('cat_id', $cat_id)-latest()-get();
         
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
@@ -41,11 +52,14 @@ class BlogsController extends Controller
     public function show_blog_detail($blog_id) 
     {
         $blog_id = intval($blog_id);
+
         $categories = \App\Category::all();
-        
         $blog = Blog::find($blog_id);
+        $list_of_comments = $blog->comments()->get();
     
-        return view('blogs.edit', compact('blog', 'categories'));
+        //dd($list_of_comments);
+
+        return view('blogs.edit', compact('blog', 'categories', 'list_of_comments'));
     }
 
     public function store_blog_detail($blog_id)

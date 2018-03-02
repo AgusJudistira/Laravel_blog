@@ -25,8 +25,10 @@
 
     @section('rechterkolom')
         @include('blogs.posts.invoer')
+
         <h4>U kunt ook een van de onderstaande blogs wijzigen door op de titel te klikken</h4>
         <hr>
+
         @foreach ($blogs_withcats as $blog)
             <h4><a href='/edit/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
         

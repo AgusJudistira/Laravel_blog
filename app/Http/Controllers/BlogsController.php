@@ -33,20 +33,20 @@ class BlogsController extends Controller
     public function show_sort_cat($cat_id)
     {
         $cat_link = \App\Category::all();
-        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();        
+        $blogs_withcats = \App\Category::find($cat_id)->blogs()->latest()->get();
 
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
 
     public function backend()
-    {   
-                
-        $categories = Category::all();
+    {           
+        $categories = \App\Category::all();
 
         $blogs_withcats = Blog::with('categories')->latest()->get();
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
     }
+
 
     public function show_blog_detail($blog_id) 
     {
@@ -57,6 +57,24 @@ class BlogsController extends Controller
         $list_of_comments = $blog->comments()->get();
     
         //dd($list_of_comments);
+
+        return view('blogs.edit', compact('blog', 'categories', 'list_of_comments'));
+    }
+
+    public function delete_comment($blog_id, $comment_id) 
+    {        
+        $comment = \App\Comments::find($comment_id);
+        $comment->forceDelete();
+
+        $blog = Blog::find($blog_id); //->with('categories'); //->get();
+        $categories = $blog->categories()->get();
+
+        //$comment = new \App\Comments;
+        //$comment->blog_id = $blog->id;
+        //$comment->comment = request('commentaar');
+        //$comment->save();
+
+        $list_of_comments = $blog->comments()->get();
 
         return view('blogs.edit', compact('blog', 'categories', 'list_of_comments'));
     }
@@ -100,7 +118,7 @@ class BlogsController extends Controller
         return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
 
-    public function storeComment($blog_id) 
+    public function store_comment($blog_id) 
     {
         $blog = Blog::find($blog_id); //->with('categories'); //->get();
         $categories = $blog->categories()->get();
@@ -116,4 +134,5 @@ class BlogsController extends Controller
         return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
     
+
 }

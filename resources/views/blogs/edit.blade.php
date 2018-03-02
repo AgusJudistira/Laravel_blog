@@ -62,9 +62,11 @@
                 <p class="htmloutput">
                 </p>
             </div>
-
+            <hr>
+            <h4>Commentaren:</h4>
+            <hr>
             @foreach($list_of_comments as $comment)
-                <p>door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }}</p>  
+                <p><a href="/edit/{{ $blog->id }}/{{ $comment->id }}">[VERWIJDEREN]</a> door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }}</p>  
             @endforeach
 
         @endsection

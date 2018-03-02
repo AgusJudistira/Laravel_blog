@@ -1,7 +1,8 @@
 <form id="artikelinvoer" method="POST" action="/posts/invoer">
     {{ csrf_field() }} 
-    <h3>Voer hier een nieuwe blog in:
-    <p>Titel: <input name='titel' type='text' value=''></h3>  Categorie: 
+    <h4>Voer hier een nieuwe blog in:</h4>
+    <hr> 
+    <h3>Titel: <input name='titel' type='text' value=''></h3>  Categorie: 
     <select name='cat_id' form='artikelinvoer'>
         @foreach ($categories as $category)
             <option value="{{ $category->cat_id }}">{{ $category->category_name }}</option>
@@ -13,6 +14,7 @@
     <p>
         <input id='sendButton' name='submit' type='submit' value='Blog invoeren' form='artikelinvoer'>
     </p>
+    <hr>
  </form>   
 
 <?php

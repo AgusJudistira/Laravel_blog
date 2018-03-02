@@ -8,10 +8,11 @@ use App\Category;
 
 class BlogsController extends Controller
 {
-    public function index() // als gebruiker naar root gaat
-    {
-        $blogs_withcats = Blog::with('categories')->latest()->get();
 
+    public function index() // als gebruiker naar root gaat
+    {        
+        $cat_link = \App\Category::all();
+        $blogs_withcats = Blog::with('categories')->latest()->get();
         //$blogs_withcats = Category::findOrFail(1)->blogs()->latest()->get();
         
         /*
@@ -25,7 +26,18 @@ class BlogsController extends Controller
         ->selectRaw("GROUP_CONCAT(categories.category_name SEPARATOR ', ') as categories")
         ->get();        
         */
-        return view('blogs.frontend', compact('blogs_withcats', 'categories'));
+        return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
+    }
+
+    public function show_sort_cat($cat_id)  //als gebruiker naar root gaat
+    {
+        $cat_link = \App\Category::all();
+        
+        $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();
+        
+        //$blogs_withcats = Blog::with('categories')-where('cat_id', $cat_id)-latest()-get();
+        
+        return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
     public function backend() // als gebruiker naar '/backend' gaat
@@ -39,11 +51,14 @@ class BlogsController extends Controller
     public function show_blog_detail($blog_id) // als admin naar '/backend/detail' gaat
     {
         $blog_id = intval($blog_id);
+
         $categories = \App\Category::all();
-        
         $blog = Blog::find($blog_id);
+        $list_of_comments = $blog->comments()->get();
     
-        return view('blogs.edit', compact('blog', 'categories'));
+        //dd($list_of_comments);
+
+        return view('blogs.edit', compact('blog', 'categories', 'list_of_comments'));
     }
 
     public function store_blog_detail($blog_id) // als admin een blog in /backend wijzigt en submit

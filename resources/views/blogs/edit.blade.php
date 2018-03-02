@@ -62,8 +62,15 @@
                 <p class="htmloutput">
                 </p>
             </div>
+
+            @foreach($list_of_comments as $comment)
+                <p>door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }}</p>  
+            @endforeach
+
         @endsection
 <!--
+    
+    {{-- var_dump($comment) --}}
         <script src="CMSbackend_002.js"></script>
         <script src="wysiwyg-editor.js"></script>
 -->

@@ -16,13 +16,22 @@
     @endsection
 
     @section('linkerkolom')
+        <a class="cat-head" href="/">All Categories</a><br>
+              
+              @foreach ($cat_link as $link)
+                  
+                 <a class="cat-body" href="/{{$link->cat_id}}">{{$link->category_name}}</a><br>
+                 
+              @endforeach
+          
+        <h2><a class="backend" href='/backend'>to Backend</a></h2> 
         <?php /*
         echo $categoriekeuzemenu;
         echo $inlog_button;
         echo $uitlog_button;
         echo $maanden; */
         ?> 
-        <h4><a href='backend'>Naar administratie aan de achterkant</a></h4>        
+        <!-- <h4><a href='backend'>Naar administratie aan de achterkant</a></h4> -->
     @endsection
 
     @section('rechterkolom')

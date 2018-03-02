@@ -14,6 +14,7 @@
 Route::get('/', 'BlogsController@index');
 
 Route::get('/backend', 'BlogsController@backend');
+Route::get('/{cat_id}', 'BlogsController@show_sort_cat');
 
 Route::get('/{cat_id}', 'BlogsController@show_sort_cat'); 
 

@@ -12,12 +12,15 @@
   <body>
   
     @section('kop')
-        <h1>Blog administratie</h1>
+        <h1>Backend</h1>
     @endsection
 
     @section('linkerkolom')
-        <h4><a href='/'>Naar de voorkant</a></h4>            
-        <h4><a href='/create_cat'>Categorieen toevoegen</a></h4>            
+            <a class="cat-head"href='/'>to frontend</a>     
+    <br>
+            <a class="cat-add"href='/create_cat'>add category</a>
+   
+                     
     @endsection
 
     @section('rechterkolom')
@@ -34,7 +37,6 @@
             
             <hr />
         @endforeach
-
      @endsection
 
     <div id="hidden-h2" style="display: none"> 

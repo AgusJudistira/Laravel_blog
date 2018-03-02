@@ -12,7 +12,7 @@
   <body>
     
     @section('kop')
-        <h1>Welkom op mijn blog!</h1>
+        <h1>Welkom to my blog!</h1>
     @endsection
 
     @section('linkerkolom')
@@ -36,13 +36,22 @@
 
     @section('rechterkolom')
     
-        @foreach ( $blogs_withcats as $blog )
-            <h4><a href='/fullblog/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
-            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }} @endforeach</p>
-            <p>{!! $blog->artikel !!}</p>
-            <hr />
-        @endforeach
+    @foreach ( $blogs_withcats as $blog )
+        <h4>{{ $blog->titel }}</h4>
+        <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }} @endforeach</p>
+        <p>{!! $blog->artikel !!}</p>
+        <hr />
+     @endforeach
         
+        <div ="comments">
+            @foreach($blog->comments as $comment)
+                <article>
+
+                        {{$comment-body}}
+
+                </article>
+        </div>
+            @endforeach
     @endsection
 
     <!-- <script type="text/javascript" src="{{ URL::asset('js/CMSfrontend_002.js') }}"></script> -->

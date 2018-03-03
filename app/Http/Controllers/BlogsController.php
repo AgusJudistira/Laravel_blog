@@ -101,11 +101,14 @@ class BlogsController extends Controller
         $blog->artikel = request('artikel');
         $cat_id = request('cat_id');
         $blog->save();
+        
+        $blog->categories()->attach($cat_id);
 
-        $blog-categories()-attach($cat_id);
-
-        return view('blogs.backend');
-        return redirect('backend');
+        $categories = \App\Category::all();
+        $blogs_withcats = Blog::with('categories')->latest()->get();
+        return view('blogs.backend', compact('blogs_withcats', 'categories'));
+        //return view('blogs.backend');
+        //return redirect('backend');
     }
 
     public function fullblog($blog_id) 

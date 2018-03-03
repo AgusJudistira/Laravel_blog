@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <title>CMS Backend</title>
         <link rel="stylesheet" type="text/css" href="/css/backend.css" />
+        <link rel="stylesheet" type="text/css" href="/css/blogedit.css" />
         <link rel="stylesheet" type="text/css" href="wysiwyg-editor.css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
@@ -16,7 +17,7 @@
         @endsection
         
         @section('linkerkolom')
-            <h3><a href="/backend">Terug naar blog administratie</a></h3>
+            <h4><a href="/backend">Terug naar overzicht</a></h4>
         @endsection
         
         @section('rechterkolom')
@@ -66,7 +67,7 @@
             <h4>Commentaren:</h4>
             <hr>
             @foreach($list_of_comments as $comment)
-                <p><a href="/edit/{{ $blog->id }}/{{ $comment->id }}">[VERWIJDEREN]</a> door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }}</p>  
+                <p class="commentaar">Door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }} [ <a href="/edit/{{ $blog->id }}/{{ $comment->id }}">VERWIJDEREN</a> ]</p>
             @endforeach
 
         @endsection

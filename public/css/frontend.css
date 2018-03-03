@@ -20,7 +20,7 @@ table, th, td {
 }
 
 #linkerkolom {
-  font-size: 2em;
+  font-size: 1.25em;
   position: fixed;
   display: block;
   padding: 10px;
@@ -33,31 +33,6 @@ table, th, td {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.cat-head{
-  color: black;
-  text-decoration: none!important;
-  text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 18px;
-  cursor: pointer;
-}
-.cat-body{
-  color: black;
-  text-decoration: black;
-  text-decoration: none!important;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-  .backend{
-  color: black;
-  text-decoration: black;
-  text-decoration: none!important;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 20px;
-  cursor: pointer;
-}
 
 input#title.form-control{
   width: 200px;
@@ -90,10 +65,41 @@ div.form-body{
   height: auto;
 }
 
-.categorie:hover {
+#artikel {
+  background:khaki;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#linkerkolom a:link {
+  color: black;
+}
+
+#linkerkolom a:visited {
+  color: darkblue;
+}
+
+#linkerkolom a:hover {
   background-color: black;
   color: white;
   cursor: default;
+  text-decoration: none!important;
+}
+
+#rechterkolom a:link {
+  color: black;
+}
+
+#rechterkolom a:visited {
+  color: darkblue;
+}
+
+#rechterkolom a:hover {
+  background-color:darkgreen;
+  color: white;
+  cursor: default;
+  text-decoration: none!important;
 }
 
 .maandpublicatie:hover {
@@ -155,7 +161,7 @@ div.form-body{
   z-index: 9;
 }
 
-
+/*
 .cat-head{
   color: black;
   text-decoration: none!important;
@@ -181,9 +187,4 @@ div.form-body{
   font-size: 20px;
   cursor: pointer;
 }
-/*
-#rechterkolom:after {
-content: "";
-display: table;
-clear: both;
-}*/
+*/

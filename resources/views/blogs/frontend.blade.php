@@ -16,15 +16,17 @@
     @endsection
 
     @section('linkerkolom')
-        <a class="cat-head" href="/">All Categories</a><br>
+    <div class="categorie">
+        <a href="/">All Categories</a><br>
               
               @foreach ($cat_link as $link)
                   
-                 <a class="cat-body" href="/{{$link->cat_id}}">{{$link->category_name}}</a><br>
+                 <a href="/{{$link->cat_id}}">{{$link->category_name}}</a><br>
                  
               @endforeach
-          
-        <h2><a class="backend" href='/backend'>to Backend</a></h2> 
+              
+        <br />
+        <h4><a href='/backend'>to Backend</a></h4> 
         <?php /*
         echo $categoriekeuzemenu;
         echo $inlog_button;
@@ -32,26 +34,20 @@
         echo $maanden; */
         ?> 
         <!-- <h4><a href='backend'>Naar administratie aan de achterkant</a></h4> -->
+    </div>
     @endsection
 
     @section('rechterkolom')
     
-    @foreach ( $blogs_withcats as $blog )
-        <h4><a href='/fullblog/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
-        <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }} @endforeach</p>
-        <p>{!! $blog->artikel !!}</p>
-        <hr />
-     @endforeach
-        
-        <div ="comments">
-            @foreach($blog->comments as $comment)
-                <article>
-
-                        {{$comment->body}}
-
-                </article>
-        </div>
-            @endforeach
+        @foreach ( $blogs_withcats as $blog )
+            <h4><a href='/fullblog/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
+            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }}, @endforeach ...</p>
+            
+            <p id="artikel">{!! $blog->artikel !!}</p>
+            <p><a href='/fullblog/{{ $blog->id }}'>Lees meer &gt;&gt;</a></p>
+            <hr />
+        @endforeach
+            
     @endsection
 
     <!-- <script type="text/javascript" src="{{ URL::asset('js/CMSfrontend_002.js') }}"></script> -->

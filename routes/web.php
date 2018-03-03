@@ -17,7 +17,7 @@ Route::get('/{cat_id}', 'BlogsController@show_sort_cat')->where('cat_id', '[0-9]
 
 Route::get('/backend', 'BlogsController@backend');
 
-Route::post('/posts/invoer', 'BlogsController@store');
+Route::post('/backend', 'BlogsController@store');
 
 Route::get('/edit/{blog_id}', 'BlogsController@show_blog_detail')->where('blog_id', '[0-9]+');
 

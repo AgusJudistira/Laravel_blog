@@ -16,11 +16,9 @@
     @endsection
 
     @section('linkerkolom')
-            <a class="cat-head"href='/'>to frontend</a>     
-    <br>
-            <a class="cat-add"href='/create_cat'>add category</a>
-   
-                     
+      <p><a href='/'>to Frontend</a></p>
+      <br>
+      <p><a href='/create_cat'>Add categories</a></p>
     @endsection
 
     @section('rechterkolom')
@@ -33,8 +31,8 @@
             <h4><a href='/edit/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
         
             <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }}  @endforeach</p>
-            <p>{!! $blog->artikel !!}</p>
-            
+            <p id="artikel">{!! $blog->artikel !!}</p>
+            <p>[ <a href='/edit/{{ $blog->id }}'>Wijzigen</a> ]</p>
             <hr />
         @endforeach
      @endsection

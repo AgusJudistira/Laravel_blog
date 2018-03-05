@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/backend.css" />
     <link rel="stylesheet" type="text/css" href="wysiwyg-editor.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/wysiwyg-editor.js"></script>
   </head>
   <body>
   

@@ -21,7 +21,7 @@
               
             @foreach ($cat_link as $link)
                 
-               <a class="cat-body" href="/show_sort_cat/{{$link->cat_id}}">{{$link->category_name}}</a><br>
+               <a class="cat-body" href="/{{$link->cat_id}}">{{$link->category_name}}</a><br>
                
             @endforeach
         

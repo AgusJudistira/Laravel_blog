@@ -1,7 +1,7 @@
 <?php
 
 
-Route::get('/{cat_id}', 'BlogsController@show_sort_cat');
+
 Route::get('/', 'BlogsController@index');
 Route::get('/backend', 'BlogsController@backend');
 Route::post('/posts/invoer', 'BlogsController@store');
@@ -12,6 +12,7 @@ Route::post('/fullblog/{blog_id}', 'BlogsController@store');
 Route::get('/create_cat', 'CategoryController@show');
 Route::post('/create_cat', 'CategoryController@store');
 Route::get('/posts/invoer', 'CategoryController@create_cat_menu');
+Route::get('/{cat_id}', 'BlogsController@show_sort_cat');//deze moet altijd als laatste
 
 
 

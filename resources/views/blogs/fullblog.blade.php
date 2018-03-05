@@ -27,19 +27,23 @@
         <p>{{ $blog->artikel }}</p>
         <hr>
 
-        <form id='commentaarinvoer' method='post'>
-            {{ csrf_field() }}
-            <h4>Anoniem commentaar invoeren</h4>
-            
-            <textarea id='commentaar' rows='5' cols='80' name='commentaar'>
-Voer een commentaar in...</textarea><br />
-            <input id='sendButton' name='submit' type='submit' value='Verstuur'>
-        </form>
-        <hr>
-        <p><b>Commentaren van lezers:</b></p>
-        @foreach($list_of_comments as $comment)
-            <p>door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }}</p>
-        @endforeach
+        @if ($blog->commentaar_toegestaan)
+            <form id='commentaarinvoer' method='post'>
+                {{ csrf_field() }}
+                <h4>Anoniem commentaar invoeren</h4>
+                
+                <textarea id='commentaar' rows='5' cols='80' name='commentaar'>
+    Voer een commentaar in...</textarea><br />
+                <input id='sendButton' name='submit' type='submit' value='Verstuur'>
+            </form>
+            <hr>
+            <p><b>Commentaren van lezers:</b></p>
+            @foreach($list_of_comments as $comment)
+                <p>door &lt;anoniem&gt;: {{ $comment->comment }} - {{ $comment->created_at }}</p>
+            @endforeach
+        @else
+            <p><i>Commentaren zijn voor dit artikel uitgeschakeld.</i></p>
+        @endif
 
     @endsection
 

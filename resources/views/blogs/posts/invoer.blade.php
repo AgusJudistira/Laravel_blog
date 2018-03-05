@@ -12,9 +12,11 @@
     </p>
 
     <textarea row="3" cols="60" name="artikel" title=""></textarea>
-    <p>
-        <input id='sendButton' name='submit' type='submit' value='Blog invoeren' form='artikelinvoer'>
-    </p>
+    <hr>
+    <p><input type='radio' name='commentaar_toegestaan' value='1' checked='checked' form='artikelinvoer'>Commentaar toegestaan</input></p>
+    <p><input type='radio' name='commentaar_toegestaan' value='0' form='artikelinvoer'>Commentaar uitgeschakeld</input></p>
+    
+    <p><input id='sendButton' name='submit' type='submit' value='Blog invoeren' form='artikelinvoer'></p>
     <hr>
  </form>   
 

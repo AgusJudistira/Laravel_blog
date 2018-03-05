@@ -28,7 +28,6 @@
         <br />
         <h4><a href='/backend'>to Backend</a></h4> 
         <?php /*
-        echo $categoriekeuzemenu;
         echo $inlog_button;
         echo $uitlog_button;
         echo $maanden; */
@@ -41,8 +40,10 @@
     
         @foreach ( $blogs_withcats as $blog )
             <h4><a href='/fullblog/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
-            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: @foreach($blog->categories as $category){{ $category->category_name }}, @endforeach ...</p>
-            
+            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: 
+                @foreach($blog->categories as $category)
+                    &lt;{{ $category->category_name }}&gt;
+                @endforeach</p>            
             <p id="artikel">{!! $blog->artikel !!}</p>
             <p><a href='/fullblog/{{ $blog->id }}'>Lees meer &gt;&gt;</a></p>
             <hr />

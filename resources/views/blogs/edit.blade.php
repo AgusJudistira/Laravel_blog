@@ -31,10 +31,15 @@
         Typ '/mvg' in om 'Met vriendelijke groet' in te voeren" required>
                     </h3>  Categorie: 
                         <select name='cat_id' form='artikelinvoer'>
-                        @foreach ($categories as $category)
+                        @foreach ($category_menu as $category)
                             <option value="{{ $category->cat_id }}">{{ $category->category_name }}</option>
                         @endforeach
                         </select>
+                        - Toegekende categorieen: 
+                        @foreach ($blog->categories as $category_assigned)
+                            &lt;{{ $category_assigned->category_name }}&gt;
+                        @endforeach
+
                 </p>
 
                 <p>                    
@@ -54,15 +59,20 @@
                     </td>
                 </p>
             </form>
-
-            <p>
-                <input id="sendButton" name="submit" type="submit" value="Wijziging opslaan" form="artikelinvoer">
-            </p>
+            @if ($blog->commentaar_toegestaan)
+                <p><input type='radio' name='commentaar_toegestaan' value='1' checked='checked' form='artikelinvoer'>Commentaar toegestaan</input></p>
+                <p><input type='radio' name='commentaar_toegestaan' value='0' form='artikelinvoer'>Commentaar uitgeschakeld</input></p>
+            @else
+                <p><input type='radio' name='commentaar_toegestaan' value='1' form='artikelinvoer'>Commentaar toegestaan</input></p>
+                <p><input type='radio' name='commentaar_toegestaan' value='0' checked='checked' form='artikelinvoer'>Commentaar uitgeschakeld</input></p>
+            @endif
+            <p><input id="sendButton" name="submit" type="submit" value="Wijziging opslaan" form="artikelinvoer"></p>
         
             <div class="codeoutput">
                 <p class="htmloutput">
                 </p>
             </div>
+           
             <hr>
             <h4>Commentaren:</h4>
             <hr>

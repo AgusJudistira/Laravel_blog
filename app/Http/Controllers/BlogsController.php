@@ -41,14 +41,14 @@ class BlogsController extends Controller
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
-    public function backend() // als gebruiker naar '/backend' gaat
-    {   
-                
-        $categories = Category::all();
+    public function backend()
+    {           
+        $categories = \App\Category::all();
 
         $blogs_withcats = Blog::with('categories')->latest()->get();
         return view('blogs.backend', compact('blogs_withcats', 'categories'));
     }
+
 
     public function show_blog_detail($blog_id) 
     {
@@ -63,13 +63,31 @@ class BlogsController extends Controller
         return view('blogs.edit', compact('blog', 'categories', 'list_of_comments'));
     }
 
+    public function delete_comment($blog_id, $comment_id) 
+    {        
+        $comment = \App\Comments::find($comment_id);
+        $comment->forceDelete();
+
+        $blog = Blog::find($blog_id); //->with('categories'); //->get();
+        $categories = $blog->categories()->get();
+
+        //$comment = new \App\Comments;
+        //$comment->blog_id = $blog->id;
+        //$comment->comment = request('commentaar');
+        //$comment->save();
+
+        $list_of_comments = $blog->comments()->get();
+
+        return view('blogs.edit', compact('blog', 'categories', 'list_of_comments'));
+    }
+
     public function store_blog_detail($blog_id)
     {
         $blog = Blog::find($blog_id);
         $blog->titel = request('titel');
         $blog->artikel = request('artikel');
         $cat_id = request('cat_id');
-        $blog-save();
+        $blog->save();
 
         if ($blog->categories()->where('blog_categories.cat_id', $cat_id)->first() != true) {
             $blog->categories()->attach($cat_id);
@@ -85,11 +103,14 @@ class BlogsController extends Controller
         $blog->artikel = request('artikel');
         $cat_id = request('cat_id');
         $blog->save();
+        
+        $blog->categories()->attach($cat_id);
 
-        $blog-categories()-attach($cat_id);
-
-        return view('blogs.backend');
-        return redirect('backend');
+        $categories = \App\Category::all();
+        $blogs_withcats = Blog::with('categories')->latest()->get();
+        return view('blogs.backend', compact('blogs_withcats', 'categories'));
+        //return view('blogs.backend');
+        //return redirect('backend');
     }
 
     public function fullblog($blog_id) 
@@ -102,7 +123,7 @@ class BlogsController extends Controller
         return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
 
-    public function storeComment($blog_id) 
+    public function store_comment($blog_id) 
     {
         $blog = Blog::find($blog_id); //->with('categories'); //->get();
         $categories = $blog->categories()->get();
@@ -120,4 +141,5 @@ class BlogsController extends Controller
 
    
     
+
 }

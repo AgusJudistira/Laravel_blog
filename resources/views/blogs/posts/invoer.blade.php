@@ -1,4 +1,5 @@
-<form id="artikelinvoer" method="POST" action="/posts/invoer">
+<form id="artikelinvoer" method="POST" action="/backend">
+
     {{ csrf_field() }} 
     <h4>Voer hier een nieuwe blog in:</h4>
     <hr> 

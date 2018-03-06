@@ -38,6 +38,19 @@ class BlogsController extends Controller
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
+    public function zoeken()
+    {
+        $cat_link = \App\Category::all();
+        $zoekstring = "%" . request('zoekstring') . "%";
+        //dd($zoekstring);
+        $blogs_withcats = \App\Blog::with('categories')
+                            ->where('titel', 'LIKE', $zoekstring)
+                            ->orWhere('artikel', 'LIKE', $zoekstring)
+                            ->latest()->get();
+
+        //$zoekstring = "zoek:$zoekstring";
+        return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
+    }
 
     public function backend()
     {           

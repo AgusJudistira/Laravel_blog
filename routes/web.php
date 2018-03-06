@@ -35,7 +35,7 @@ Route::post('/create_cat', 'CategoryController@store');
 
 Route::get('/posts/invoer', 'CategoryController@create_cat_menu');
 
-
+Route::post('/zoeken', 'BlogsController@zoeken');
 
 
 

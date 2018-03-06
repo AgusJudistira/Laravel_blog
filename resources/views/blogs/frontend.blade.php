@@ -13,6 +13,14 @@
     
     @section('kop')
         <h1>Welkom to my blog!</h1>
+        
+        <form id='frontend-zoekform' method='post' action="/zoeken">
+            
+            {{ csrf_field() }} 
+            <b>Artikels opzoeken: </b><input id='zoekstring' name='zoekstring' type='text' size='40'></input>
+            <input type='submit' value='Opzoeken'>
+        </form><br />      
+        
     @endsection
 
     @section('linkerkolom')
@@ -60,7 +68,7 @@
             
     @endsection
 
-    <!-- <script type="text/javascript" src="{{ URL::asset('js/CMSfrontend_002.js') }}"></script> -->
+    <script type="text/javascript" src="{{ URL::asset('js/CMSfrontend_002.js') }}"></script>
  
   </body>
 </html>

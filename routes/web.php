@@ -17,15 +17,11 @@ Route::get('/edit/{blog_id}/{comment_id}', 'BlogsController@delete_comment')->wh
 Route::get('/fullblog/{blog_id}', 'BlogsController@fullblog')->where('blog_id', '[0-9]+');
 
 Route::post('/fullblog/{blog_id}', 'BlogsController@store_comment')->where('blog_id', '[0-9]+');
-Route::post('/',[
-    'uses' => 'BlogsController@postSearch',
-    'as' => 'search'
- ]);
 Route::get('/create_cat', 'CategoryController@show');
 Route::post('/create_cat', 'CategoryController@store');
 Route::get('/posts/invoer', 'CategoryController@create_cat_menu');
-// Route::get('/{cat_id}', 'BlogsController@show_sort_cat');//deze moet altijd als laatste
 
+Route::post('/zoeken', 'BlogsController@zoeken');
 
 
 

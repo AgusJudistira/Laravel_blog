@@ -29,7 +29,7 @@
         Typ '/ag' in om 'Agus Judistira' in te voeren&#013;&#010;
         Typ '/nl' in om 'Nederland' in te voeren&#013;&#010;
         Typ '/mvg' in om 'Met vriendelijke groet' in te voeren" required>
-                    </h3>  Categorie: 
+                    </h3>Toe te voegen categorie: 
                         <select name='cat_id' form='artikelinvoer'>
                         @foreach ($category_menu as $category)
                             <option value="{{ $category->cat_id }}">{{ $category->category_name }}</option>

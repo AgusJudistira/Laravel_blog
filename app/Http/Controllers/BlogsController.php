@@ -42,6 +42,21 @@ class BlogsController extends Controller
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
+
+    public function zoeken()
+    {
+        $cat_link = \App\Category::all();
+        $zoekstring = "%" . request('zoekstring') . "%";
+        //dd($zoekstring);
+        $blogs_withcats = \App\Blog::with('categories')
+                            ->where('titel', 'LIKE', $zoekstring)
+                            ->orWhere('artikel', 'LIKE', $zoekstring)
+                            ->latest()->get();
+
+        //$zoekstring = "zoek:$zoekstring";
+        return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
+    }
+
     public function backend()
     {           
         $categories = \App\Category::all();
@@ -139,17 +154,6 @@ class BlogsController extends Controller
     }
 
    
-    public function postSearch(Request $request)
-{
-        $q = $request->input('q');
-        $products = DB::with('categories')
-                        ->join('blog_categories', function ($join) {
-                            $join->on('cat_id', '=', 'blog_categories.id')
-                                ->where('name','LIKE','%'.$q.'%')->orWhere('category_name','LIKE','%'.$q.'%');
-                            })->get();
-        if(count($products) > 0)
-        return view('search')->withDetails($products)->withQuery ( $q );
-        else return view ('search')->withMessage('No Details found. Try to search again !');
-}
+
 
 }

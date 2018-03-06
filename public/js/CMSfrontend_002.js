@@ -2,6 +2,14 @@ var categorieen = document.getElementsByClassName('categorie');
 var maanden = document.getElementsByClassName('maandpublicatie');
 var rechterkolom = document.getElementById('rechterkolom');
 
+/*
+var zoekstring = document.getElementById('zoekstring');
+
+zoekstring.onsubmit = function (ev) {
+    ev.preventDefault();
+    zoekstring.value = "zoek:" + zoekstring.value;
+    this.submit();
+}*/
 //alert('categorieen.length ='+categorieen.length);
 
 for (var i = 0; i < maanden.length; i++) {

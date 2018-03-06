@@ -3,7 +3,6 @@ table, th, td {
   border-collapse: collapse;
   padding: 4px;
 }
-
 #kop {
   position: fixed;
   width: 100%;
@@ -18,7 +17,6 @@ table, th, td {
   padding: 10px;
   z-index: 1;
 }
-
 #linkerkolom {
   font-size: 1.25em;
   position: fixed;
@@ -32,25 +30,19 @@ table, th, td {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
-
-ut#title.form-control{
+input#title.form-control{
   width: 200px;
 }
-
 div.form-title{
    margin-top: 80px;
 }
-
 textarea#body.form-control{
   width: 400px;
   height: 200px;
 }
-
 div.form-body{
   margin-top: 30px;
 }
-
 #rechterkolom {
   position: absolute;
   display: block;
@@ -64,52 +56,51 @@ div.form-body{
   /* height: 100%;*/
   height: auto;
 }
-
-
-
-.categorie:hover {
+#artikel {
+  background:khaki;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#linkerkolom a:link {
+  color: black;
+}
+#linkerkolom a:visited {
+  color: darkblue;
+}
+#linkerkolom a:hover {
   background-color: black;
   color: white;
   cursor: default;
   text-decoration: none!important;
 }
-
 #rechterkolom a:link {
   color: black;
 }
-
 #rechterkolom a:visited {
   color: darkblue;
 }
-
 #rechterkolom a:hover {
   background-color:darkgreen;
   color: white;
   cursor: default;
   text-decoration: none!important;
 }
-
 .maandpublicatie:hover {
   background-color: black;
   color: white;
   cursor: default;
 }
-
-
 #maandpublicatietabel tr td {
   border-style: hidden;
   padding: 0;
 }
-
-
 #frontend-zoekform {
   position: absolute;
   white-space: nowrap;
   top: 10px;
   right: 24px;
-
 }
-
 #user-login, #pwreset-form, #email-form {
   color: white;
   text-align: right;
@@ -126,11 +117,9 @@ div.form-body{
   -ms-transform: translate(-50%, -50%);
   z-index: 9;
 }
-
 #user-login a {
   color: yellow;
 }
-
 #account-form {
   color: white;
   text-align: right;
@@ -147,7 +136,6 @@ div.form-body{
   -ms-transform: translate(-50%, -50%);
   z-index: 9;
 }
-
 /*
 .cat-head{
   color: black;
@@ -165,7 +153,6 @@ div.form-body{
   font-size: 15px;
   cursor: pointer;
 }
-
 .backend{
   color: black;
   text-decoration: black;

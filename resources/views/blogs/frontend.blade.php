@@ -16,6 +16,15 @@
     @endsection
 
     @section('linkerkolom')
+    <form action="{{ route('search') }}" method="post" role="search">
+        {{ csrf_field() }}
+        <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Search    products"> 
+            <span class="glyphicon glyphicon-search"></span>
+                <button type="submit" class="btn-btn-primary">Submit</button>
+            </span>
+        </div>
+    </form>
     <div class="categorie">
         <a href="/">All Categories</a><br>
               

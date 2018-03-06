@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>CMS Backend</title>
     <link rel="stylesheet" type="text/css" href="/css/backend.css" />
-    <link rel="stylesheet" type="text/css" href="wysiwyg-editor.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="wysiwyg-editor.css" /> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>

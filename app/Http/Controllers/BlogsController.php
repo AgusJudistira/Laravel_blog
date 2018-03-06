@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\Category;
-use App\DB;
 
 class BlogsController extends Controller
 {
 
-    public function show_sort_cat($cat_id) // als gebruiker naar root gaat
-    {
+    public function show_sort_cat($cat_id){
+
         $cat_link = \App\Category::all();
         $blogs_withcats = Category::find($cat_id)->blogs()->latest()->get();
         
@@ -119,6 +118,7 @@ class BlogsController extends Controller
         $blog->save();
         
         $blog->categories()->attach($cat_id);
+        
 
         $categories = \App\Category::all();
         $blogs_withcats = Blog::with('categories')->latest()->get();

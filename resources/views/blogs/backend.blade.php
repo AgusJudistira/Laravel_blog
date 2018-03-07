@@ -22,23 +22,25 @@
     @endsection
 
     @section('rechterkolom')
-        @include('blogs.posts.invoer')
+      @include('layouts.errors')
 
-        <h4>U kunt ook een van de onderstaande blogs wijzigen door op de titel te klikken</h4>
-        <hr>
+      @include('blogs.posts.invoer')
 
-        @foreach ($blogs_withcats as $blog)
-            <h4><a href='/edit/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
-        
-            <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: 
-            @foreach($blog->categories as $category)
-              &lt;{{ $category->category_name }}&gt;
-            @endforeach</p>
-            <p id="artikel">{!! $blog->artikel !!}</p>
-            <p>[ <a href='/edit/{{ $blog->id }}'>Wijzigen</a> ]</p>
-            <hr />
-        @endforeach
-     @endsection
+      <h4>U kunt ook een van de onderstaande blogs wijzigen door op de titel te klikken</h4>
+      <hr>
+
+      @foreach ($blogs_withcats as $blog)
+          <h4><a href='/edit/{{ $blog->id }}'>{{ $blog->titel }}</a></h4>
+      
+          <p>Datum publicatie: {{ $blog->created_at }} - Categorieen: 
+          @foreach($blog->categories as $category)
+            &lt;{{ $category->category_name }}&gt;
+          @endforeach</p>
+          <p id="artikel">{!! $blog->artikel !!}</p>
+          <p>[ <a href='/edit/{{ $blog->id }}'>Wijzigen</a> ]</p>
+          <hr />
+      @endforeach
+    @endsection
 
     <div id="hidden-h2" style="display: none"> 
     <h2>nodig</h2>

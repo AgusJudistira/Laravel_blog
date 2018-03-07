@@ -42,13 +42,12 @@ class BlogsController extends Controller
     {
         $cat_link = \App\Category::all();
         $zoekstring = "%" . request('zoekstring') . "%";
-        //dd($zoekstring);
+
         $blogs_withcats = \App\Blog::with('categories')
                             ->where('titel', 'LIKE', $zoekstring)
                             ->orWhere('artikel', 'LIKE', $zoekstring)
                             ->latest()->get();
 
-        //$zoekstring = "zoek:$zoekstring";
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
@@ -92,6 +91,12 @@ class BlogsController extends Controller
         $blog = Blog::find($blog_id);
         $blog->titel = request('titel');
         $blog->artikel = request('artikel');
+        
+        $this->validate(request(),[
+            'titel' => 'required',
+            'artikel' => 'required'
+        ]);
+        
         $cat_id = request('cat_id');
         $blog->commentaar_toegestaan = intval(request('commentaar_toegestaan'));
         //dd($blog);
@@ -107,6 +112,10 @@ class BlogsController extends Controller
     public function store() 
     {
         $blog = new Blog;
+        $this->validate(request(),[
+            'titel' => 'required',
+            'artikel' => 'required'
+        ]);
         $blog->titel = request('titel');
         $blog->artikel = request('artikel');
         $cat_id = request('cat_id');

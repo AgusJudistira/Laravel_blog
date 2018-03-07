@@ -30,10 +30,10 @@
         @if ($blog->commentaar_toegestaan)
             <form id='commentaarinvoer' method='post'>
                 {{ csrf_field() }}
-                <h4>Anoniem commentaar invoeren</h4>
+                <h4>Anoniem commentaar geven</h4>
                 
                 <textarea id='commentaar' rows='5' cols='80' name='commentaar'>
-    Voer een commentaar in...</textarea><br />
+Voer hier een commentaar in...</textarea><br />
                 <input id='sendButton' name='submit' type='submit' value='Verstuur'>
             </form>
             <hr>

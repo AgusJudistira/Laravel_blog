@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'BlogsController@index');
+Route::get('/', 'BlogsController@index')->name('home');
 
 Route::get('/{cat_id}', 'BlogsController@show_sort_cat')->where('cat_id', '[0-9]+'); // the {cat_id} is a wildcard and have to be restricted with regex to only accept numbers
 
@@ -37,9 +37,12 @@ Route::get('/posts/invoer', 'CategoryController@create_cat_menu');
 
 Route::post('/zoeken', 'BlogsController@zoeken');
 
+Route::get('/login', 'SessionController@create');
 
+Route::post('/logout', 'SessionController@destroy');
 
+Route::get('/register', 'RegistrationController@create');
 
-
+Route::post('/register', 'RegistrationController@store');
 
 

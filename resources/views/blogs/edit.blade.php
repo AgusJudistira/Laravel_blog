@@ -21,11 +21,12 @@
         @endsection
         
         @section('rechterkolom')
+            @include('layouts.errors')
             
             <form id="artikelinvoer" method="post">
                 {{ csrf_field() }} 
                 <p>
-                    <h3>Titel: <input id="blogtitel" form="artikelinvoer" name="titel" type="text" value="{{ $blog->titel }}" title="Typ '/cg' in om 'Code Gorilla' in te voeren&#013;&#010;
+                    <h3>Titel: <input id="blogtitel" form="artikelinvoer" name="titel" type="text" size="50" value="{{ $blog->titel }}" title="Typ '/cg' in om 'Code Gorilla' in te voeren&#013;&#010;
         Typ '/ag' in om 'Agus Judistira' in te voeren&#013;&#010;
         Typ '/nl' in om 'Nederland' in te voeren&#013;&#010;
         Typ '/mvg' in om 'Met vriendelijke groet' in te voeren" required>

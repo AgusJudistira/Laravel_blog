@@ -34,8 +34,12 @@
                 
             <br />
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Inloggen</button>
+            <div class="form-group">                
+                @if (Auth::check())
+                    <p>{{ Auth::user()->name() } is ingelogd.}</p>
+                @else
+                    <button type="submit" class="btn btn-primary">Inloggen</button>
+                @endif
             </div>
             <p><a href='/register'>Account aanmaken</p>
 
@@ -46,7 +50,7 @@
             echo $uitlog_button;
             echo $maanden; */
             ?> 
-            <!-- <h4><a href='backend'>Naar administratie aan de achterkant</a></h4> -->
+            
         </div>
     @endsection
 

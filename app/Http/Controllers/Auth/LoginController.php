@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -34,7 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout', 'userLogout']);
+        $this->middleware('guest:web')->except(['logout', 'userLogout']);
     }
 
     public function showLoginForm()
@@ -42,8 +44,6 @@ class LoginController extends Controller
         $cat_link = \App\Category::all();
         $blogs_withcats = Array();
         $categories = Array();
-        
-        //dd($cat_link);
 
         return view('auth/user-login', compact('cat_link', 'blogs_withcats', 'categories'));
     }
@@ -56,18 +56,16 @@ class LoginController extends Controller
         ]);
         
         if (Auth::guard('web')->attempt(['email'=> $request->email, 'password' => $request->password], $request->remember)) {            
-            //login successful
-            return redirect()->intended(route('frontend'));
+
+            return redirect()->intended(route('home'));
         }
-        //login fails
-        //dd($request->password);
 
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
     public function userLogout()
     {
-        Auth::guard('web')->logout();
+        $this->guard('web')->logout();
 
         return redirect()->home();
     }

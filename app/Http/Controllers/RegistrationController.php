@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class RegistrationController extends Controller
 {
+
     public function create()
     {
         $cat_link = \App\Category::all();
@@ -21,6 +22,8 @@ class RegistrationController extends Controller
             'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
+
+        //$request['password'] = bcrypt($request['password']);
 
         $user = \App\User::create(request(['name', 'email', 'password']));
 

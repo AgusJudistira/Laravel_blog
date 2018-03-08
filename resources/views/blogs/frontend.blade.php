@@ -47,12 +47,6 @@
             <p><a href='/register'>Account aanmaken</p>
             <!-- <h4><a href='/admin/login'>to Backend</a></h4> -->
             <h4><a href='/backend'>to Backend</a></h4>
-
-            <?php /*
-            echo $inlog_button;
-            echo $uitlog_button;
-            echo $maanden; */
-            ?> 
             
         </div>
     @endsection

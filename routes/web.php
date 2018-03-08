@@ -48,10 +48,14 @@ Route::get('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::post('/user-login', 'Auth\LoginController@userLogin')->name('user.login.submit');
 
 
-Route::get('/register', 'RegistrationController@create');
+//Route::get('/register', 'RegistrationController@create');
 
-Route::post('/register', 'RegistrationController@store');
+//Route::post('/register', 'RegistrationController@store');
+/*
+Route::get('/register', 'Auth\RegisterController@create');
 
+Route::post('/register', 'Auth\RegisterController@validator');
+*/
 
 Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 

@@ -6,7 +6,7 @@
 
     <div class="col-sm-8">
         <h2>Visitors Login</h2>
-        <form method="POST" action="{{ route('admin.login.submit') }}">
+        <form method="POST" action="{{ route('user.login.submit') }}">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="email">Email: </label>

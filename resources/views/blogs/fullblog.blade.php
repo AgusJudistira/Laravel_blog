@@ -22,7 +22,7 @@
 
         <p>Ingevoerd op: {{ $blog->created_at }} - Bijgewerkt op: {{ $blog->updated_at }}</p>
 
-        <p>Categorieen: @foreach($categories as $cat)&lt;{{ $cat->category_name }}&gt;  @endforeach</p>
+        <p>Categorieen: @foreach($categories as $cat)&lt;{{ $cat->category_name }}&gt; @endforeach</p>
         <hr>
         <p>{{ $blog->artikel }}</p>
         <hr>

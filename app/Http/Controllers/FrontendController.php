@@ -8,6 +8,11 @@ use App\Category;
 
 class FrontendController extends Controller
 {
+    /*
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
 
     public function index() // als gebruiker naar root gaat
     {        

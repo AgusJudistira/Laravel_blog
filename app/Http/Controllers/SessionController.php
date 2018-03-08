@@ -8,7 +8,9 @@ class SessionController extends Controller
 {
     public function create()
     {
-        
+        auth()->login();
+
+        return redirect()->home();
     }
 
     public function destroy()

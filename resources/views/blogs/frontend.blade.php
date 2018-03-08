@@ -33,17 +33,20 @@
                 @endforeach
                 
             <br />
-
-            <div class="form-group">                
-                @if (Auth::check())
-                    <p>{{ Auth::user()->name() } is ingelogd.}</p>
-                @else
+                            
+            @if (Auth::check())
+                @component('components.who')            
+                @endcomponent
+                <!-- <p>{{-- Auth::user()->name() --}} is ingelogd.</p> -->
+            @else
+                <form class="form-group" action='user-login'>
                     <button type="submit" class="btn btn-primary">Inloggen</button>
-                @endif
-            </div>
+                </form>
+            @endif
+            
             <p><a href='/register'>Account aanmaken</p>
-
-            <h4><a href='/backend'>to Backend</a></h4> 
+            <!-- <h4><a href='/admin/login'>to Backend</a></h4> -->
+            <h4><a href='/backend'>to Backend</a></h4>
 
             <?php /*
             echo $inlog_button;

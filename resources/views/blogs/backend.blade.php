@@ -16,9 +16,17 @@
     @endsection
 
     @section('linkerkolom')
-      <p><a href='/'>to Frontend</a></p>
-      <br>
+          
+      @if (Auth::guard('admin')->check())
+          <p><b>
+            @component('components.who')            
+            @endcomponent          
+          <br>                
+      @endif
+      
       <p><a href='/create_cat'>Add categories</a></p>
+      <br>
+      <p><a href='/'>to Frontend</a></p>
     @endsection
 
     @section('rechterkolom')

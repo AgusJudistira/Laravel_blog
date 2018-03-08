@@ -8,6 +8,10 @@ use App\Category;
 
 class BackendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
     public function backend()
     {           

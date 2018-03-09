@@ -3,7 +3,7 @@
     {{ csrf_field() }} 
     <h4>Voer hier een nieuwe blog in:</h4>
     <hr> 
-    <h3>Titel: <input name='titel' type='text' value=''></h3>  Categorie: 
+    <h3>Titel: <input name='titel' type='text' value='' size='50'></h3>  Categorie: 
     <select name='cat_id' form='artikelinvoer'>
         @foreach ($categories as $category)
             <option value="{{ $category->cat_id }}">{{ $category->category_name }}</option>
@@ -12,9 +12,11 @@
     </p>
 
     <textarea row="3" cols="60" name="artikel" title=""></textarea>
-    <p>
-        <input id='sendButton' name='submit' type='submit' value='Blog invoeren' form='artikelinvoer'>
-    </p>
+    <hr>
+    <p><input type='radio' name='commentaar_toegestaan' value='1' checked='checked' form='artikelinvoer'>Commentaar toegestaan</input></p>
+    <p><input type='radio' name='commentaar_toegestaan' value='0' form='artikelinvoer'>Commentaar uitgeschakeld</input></p>
+    
+    <p><input id='sendButton' name='submit' type='submit' value='Blog invoeren' form='artikelinvoer'></p>
     <hr>
  </form>   
 

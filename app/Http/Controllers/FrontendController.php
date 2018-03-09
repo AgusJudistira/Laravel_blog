@@ -15,13 +15,24 @@ class FrontendController extends Controller
     }*/
 
     public function index() // als gebruiker naar root gaat
-    {        
+    {
+        /*
+        $month_link = Blog::selectRaw('MONTH(created_at) as maandnummer, MONTHNAME(created_at), YEAR(created_at), COUNT(*) GROUP BY maandnummer')
+//        ->groupBy('maandnummer')
+        ->latest()->limit(12)->toSql();//->get();
+        //ORDER BY created_at DESC LIMIT 12')->get();
+        //->groupby('month(created_at)')->raw('monthname(created_at) as monthname')->latest()->get();
+        dd($month_link);*/
         $cat_link = Category::all();
         $blogs_withcats = Blog::with('categories')->latest()->get();
         
         return view('blogs.frontend', compact('blogs_withcats', 'categories', 'cat_link'));
     }
 
+    public function show_sort_month()
+    {
+
+    }
         
     public function show_sort_cat($cat_id)
     {

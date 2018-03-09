@@ -55,11 +55,13 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
         
-        if (Auth::guard('web')->attempt(['email'=> $request->email, 'password' => $request->password], $request->remember)) {            
-
-            return redirect()->intended(route('home'));
+        if (Auth::guard('web')->attempt(['email'=> $request->email, 'password' => $request->password], $request->remember)) {
+            //login success
+            return redirect()->route('home');
+            //return redirect()->intended(route('home'));
         }
-
+        
+        //login failed
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 

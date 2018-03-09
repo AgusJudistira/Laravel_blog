@@ -18,7 +18,7 @@
     @section('linkerkolom')
           
       @if (Auth::guard('admin')->check())
-          <p><b>
+          <p>
             @component('components.who')            
             @endcomponent          
           <br>                

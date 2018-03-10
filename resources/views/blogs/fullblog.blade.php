@@ -24,7 +24,7 @@
 
         <p>Categorieen: @foreach($categories as $cat)&lt;{{ $cat->category_name }}&gt; @endforeach</p>
         <hr>
-        <p>{{ $blog->artikel }}</p>
+        <p>{!! $blog->artikel !!}</p>
         <hr>
 
         @if ($blog->commentaar_toegestaan)

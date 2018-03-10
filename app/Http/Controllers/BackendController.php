@@ -29,7 +29,7 @@ class BackendController extends Controller
         $category_menu = \App\Category::all();
         $blog = Blog::with('categories')->find($blog_id);
         
-        $list_of_comments = $blog->comments()->get();
+        $list_of_comments = $blog->comments()->latest()->get();
 
         return view('blogs.edit', compact('blog', 'category_menu', 'blog->categories', 'list_of_comments'));
     }
@@ -42,7 +42,7 @@ class BackendController extends Controller
         $category_menu = \App\Category::all();
         $blog = Blog::with('categories')->find($blog_id);
 
-        $list_of_comments = $blog->comments()->get();
+        $list_of_comments = $blog->comments()->latest()->get();
 
         return view('blogs.edit', compact('blog', 'category_menu', 'blog->categories', 'list_of_comments'));
     }

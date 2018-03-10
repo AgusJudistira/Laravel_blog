@@ -26,6 +26,7 @@ table, th, td {
   padding: 10px;
   background-color: lightskyblue;
   float: left;
+  overflow-y: auto;
   margin-top: 72px;
   left: 0;
   width: 25%;
@@ -67,7 +68,7 @@ div.form-body{
 
 #artikel {
   background:khaki;
-  white-space: nowrap;
+  white-space: nowrap; /* pre */
   overflow: hidden;
   text-overflow: ellipsis;
 }

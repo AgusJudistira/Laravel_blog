@@ -54,7 +54,7 @@
                     @foreach($blog->categories as $category)
                         &lt;{{ $category->category_name }}&gt;
                     @endforeach</p>            
-                <p id="artikel">{!! $blog->artikel !!}</p>
+                <p id="artikel">{!! substr($blog->artikel, 0, 160) !!}...</p>
                 <p><a href='/fullblog/{{ $blog->id }}'>Lees meer &gt;&gt;</a></p>
                 <hr />
             @endforeach

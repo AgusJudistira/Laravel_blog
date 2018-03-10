@@ -2,7 +2,7 @@
 <p><b>Github:</b> https://github.com/AgusJudistira/Laravel_blog</p>
 <p><b>Trello:</b> https://trello.com/b/C5zKtf2g/een-cms-bouwen</p>
 <p><b>Deployment:</b> https://vast-citadel-35958.herokuapp.com/</p>
-<p>Login credentials backend: 'agus.judistira@gmail.com' wachtwoord: 'medLey'</p>
+<p><b>Login credentials backend: 'agus.judistira@gmail.com' wachtwoord: 'medLey'</b>></p>
 <br /><hr /><br />
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 

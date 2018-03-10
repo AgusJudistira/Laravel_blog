@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>CMS Frontend</title>
     <link rel="stylesheet" type="text/css" href="/css/frontend.css" />
+    <script src="js\CMSfrontend_002.js"></script>
 </head> 
   <body>
     
@@ -33,7 +34,16 @@
                  
               @endforeach
               
-        <br />
+        <br>
+    </div>
+    <!-- <div class="month_review">Monthly review
+
+        @foreach ($cat_link as $link)
+                  
+            
+                  
+        @endforeach
+    </div> -->
         <h4><a href='/backend'>to Backend</a></h4> 
         <?php /*
         echo $inlog_button;
@@ -41,7 +51,7 @@
         echo $maanden; */
         ?> 
         <!-- <h4><a href='backend'>Naar administratie aan de achterkant</a></h4> -->
-    </div>
+   
     @endsection
 
     @section('rechterkolom')

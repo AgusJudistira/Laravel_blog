@@ -16,6 +16,7 @@ Route::get('/', 'BlogsController@index');
 Route::get('/{cat_id}', 'BlogsController@show_sort_cat')->where('cat_id', '[0-9]+'); // the {cat_id} is a wildcard and have to be restricted with regex to only accept numbers
 
 Route::get('/backend', 'BlogsController@backend');
+// Route::get('/', 'BlogsController@show_sort_month');
 
 Route::post('/backend', 'BlogsController@store');
 

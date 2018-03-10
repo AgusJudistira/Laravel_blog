@@ -2,15 +2,6 @@ var categorieen = document.getElementsByClassName('categorie');
 var maanden = document.getElementsByClassName('maandpublicatie');
 var rechterkolom = document.getElementById('rechterkolom');
 
-/*
-var zoekstring = document.getElementById('zoekstring');
-
-zoekstring.onsubmit = function (ev) {
-    ev.preventDefault();
-    zoekstring.value = "zoek:" + zoekstring.value;
-    this.submit();
-}*/
-//alert('categorieen.length ='+categorieen.length);
 
 for (var i = 0; i < maanden.length; i++) {
     maanden[i].onclick = function() {
@@ -27,6 +18,7 @@ for (var i = 0; i < categorieen.length; i++) {
 }
 
 function getBloglistWithCat(cat_id) {
+    // alert(cat_id);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
 

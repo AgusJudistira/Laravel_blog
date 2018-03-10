@@ -59,7 +59,7 @@ class FrontendController extends Controller
     {
         $blog = Blog::find($blog_id);
         $categories = $blog->categories()->get();
-        $list_of_comments = $blog->comments()->get();
+        $list_of_comments = $blog->comments()->latest()->get();
 
         return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
@@ -75,7 +75,7 @@ class FrontendController extends Controller
 
         $comment->save();
 
-        $list_of_comments = $blog->comments()->get();
+        $list_of_comments = $blog->comments()->latest()->get();
 
         return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }

@@ -26,6 +26,7 @@ table, th, td {
   padding: 10px;
   background-color: lightskyblue;
   float: left;
+  overflow-y: scroll;
   margin-top: 72px;
   left: 0;
   width: 25%;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
@@ -16,13 +17,6 @@ class FrontendController extends Controller
 
     public function index() // als gebruiker naar root gaat
     {
-        /*
-        $month_link = Blog::selectRaw('MONTH(created_at) as maandnummer, MONTHNAME(created_at), YEAR(created_at), COUNT(*) GROUP BY maandnummer')
-//        ->groupBy('maandnummer')
-        ->latest()->limit(12)->toSql();//->get();
-        //ORDER BY created_at DESC LIMIT 12')->get();
-        //->groupby('month(created_at)')->raw('monthname(created_at) as monthname')->latest()->get();
-        dd($month_link);*/
         $cat_link = Category::all();
         $blogs_withcats = Blog::with('categories')->latest()->get();
         
@@ -31,7 +25,7 @@ class FrontendController extends Controller
 
     public function show_sort_month()
     {
-
+        // will be filled
     }
         
     public function show_sort_cat($cat_id)
@@ -79,6 +73,5 @@ class FrontendController extends Controller
 
         return view('blogs.fullblog', compact('blog', 'categories', 'list_of_comments'));
     }
-    
 
 }

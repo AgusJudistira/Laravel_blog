@@ -24,7 +24,7 @@
     {{ csrf_field() }} 
     <h4>Voer hier een nieuwe blog in:</h4>
     <hr> 
-    <h3>Titel: <input name='titel' type='text' value=''></h3>  Categorie: 
+    <h3>Titel: <input name='titel' type='text' value='' size='50'></h3>  Categorie: 
     <select name='cat_id' form='artikelinvoer'>
         @foreach ($categories as $category)
             <option value="{{ $category->cat_id }}">{{ $category->category_name }}</option>

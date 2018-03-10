@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>CMS Frontend</title>
     <link rel="stylesheet" type="text/css" href="/css/frontend.css" />
+    <script src="js\CMSfrontend_002.js"></script>
 </head> 
   <body>
     

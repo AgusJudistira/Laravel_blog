@@ -47,6 +47,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    public function showRegistrationForm()
+    {
+        $cat_link = \App\Category::all();
+        $blogs_withcats = Array();
+        $categories = Array();
+
+        return view('auth/register', compact('cat_link', 'blogs_withcats', 'categories'));
+    }     
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
